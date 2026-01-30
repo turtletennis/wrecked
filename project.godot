@@ -11,8 +11,22 @@ config_version=5
 [application]
 
 config/name="wrecked"
+run/main_scene="uid://b0l8c40crtxe3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+PhantomCameraManager="*uid://duq6jhf6unyis"
+
+[display]
+
+window/size/viewport_width=3840
+window/size/viewport_height=2160
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
 [input]
 
