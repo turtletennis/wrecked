@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://csupmqbhgw8ef"]
+
+[ext_resource type="Script" uid="uid://vx3utqkjb74g" path="res://scripts/shipwreck.gd" id="1_fgvkc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_045es"]
+size = Vector3(5, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_omn1t"]
+size = Vector3(5, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fgvkc"]
+size = Vector3(6, 3, 3)
+
+[node name="Shipwreck" type="StaticBody3D" unique_id=1503740162]
+script = ExtResource("1_fgvkc")
+
+[node name="ship" type="MeshInstance3D" parent="." unique_id=1196286085]
+mesh = SubResource("BoxMesh_045es")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=760667356]
+shape = SubResource("BoxShape3D_omn1t")
+
+[node name="PlayerInteractArea" type="Area3D" parent="." unique_id=170478156]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PlayerInteractArea" unique_id=1075135495]
+shape = SubResource("BoxShape3D_fgvkc")
