@@ -40,6 +40,12 @@ rotational_multiplier_x = 0.5
 rotational_multiplier_y = 0.5
 metadata/_custom_type_script = "uid://cuffvge5ad4aa"
 
+[sub_resource type="BoxMesh" id="BoxMesh_045es"]
+size = Vector3(5, 2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_omn1t"]
+size = Vector3(5, 2, 3)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61w3m"]
 albedo_texture = ExtResource("6_pdpul")
 roughness_texture = ExtResource("8_omn1t")
@@ -49,15 +55,22 @@ uv1_scale = Vector3(0.25, 0.25, 0.25)
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_sjb42"]
-lightmap_size_hint = Vector2i(34, 531)
+lightmap_size_hint = Vector2i(59, 556)
 add_uv2 = true
-size = Vector3(5, 50, 1)
+size = Vector3(10, 50, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pdtm5"]
-size = Vector3(5, 50, 1)
+lightmap_size_hint = Vector2i(59, 556)
+add_uv2 = true
+size = Vector3(10, 50, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pdpul"]
-size = Vector3(25, 20, 1)
+lightmap_size_hint = Vector2i(209, 406)
+add_uv2 = true
+size = Vector3(40, 20, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_045es"]
+data = PackedVector3Array(-20, -50, 0.5, -10, -48.63122, 0.5, -10, -50, 0.5, -20, -50, -0.5, -10, -50, -0.5, -20, 0, -0.5, -10, -50, -0.5, -10, -48.63122, -0.5, -20, 0, -0.5, -20, 0, -0.5, -10, -48.63122, -0.5, -10, 0, -0.5, -20, -50, -0.5, -20, 0, -0.5, -20, 0, 0.5, -20, 0, -0.5, -10, 0, -0.5, -20, 0, 0.5, -10, 0, -0.5, -10, -48.63122, -0.5, -10, 0, 0.5, -20, -50, -0.5, -20, 0, 0.5, -20, -50, 0.5, -20, -50, 0.5, -10, 0, 0.5, -10, -48.63122, 0.5, -10, 0, -0.5, -10, 0, 0.5, -20, 0, 0.5, -20, -50, 0.5, -20, 0, 0.5, -10, 0, 0.5, -10, 0, 0.5, -10, -48.63122, -0.5, -10, -48.63122, 0.5, 20, -50, -0.5, 10, -48.63122, -0.5, 10, -50, -0.5, 10, -48.63122, -0.5, 20, -50, -0.5, 10, 0, -0.5, 10, 0, -0.5, 10, -48.63122, 0.5, 10, -48.63122, -0.5, 20, -50, -0.5, 20, -50, 0.5, 20, 0, -0.5, 20, -50, -0.5, 20, 0, -0.5, 10, 0, -0.5, 10, 0, -0.5, 20, 0, -0.5, 10, 0, 0.5, 10, -50, 0.5, 10, -48.63122, 0.5, 20, 0, 0.5, 10, -50, 0.5, 20, 0, 0.5, 20, -50, 0.5, 10, 0, -0.5, 10, 0, 0.5, 10, -48.63122, 0.5, 20, -50, 0.5, 20, 0, 0.5, 20, 0, -0.5, 20, 0, -0.5, 20, 0, 0.5, 10, 0, 0.5, 20, 0, 0.5, 10, -48.63122, 0.5, 10, 0, 0.5, -20, -68.631226, -0.5, -20, -50, -0.5, -20, -50, 0.5, -20, -68.631226, -0.5, 20, -68.631226, -0.5, -20, -50, -0.5, 20, -68.631226, -0.5, -10, -50, -0.5, -20, -50, -0.5, -10, -50, -0.5, 10, -48.63122, -0.5, -10, -48.63122, -0.5, -20, -68.631226, -0.5, -20, -50, 0.5, -20, -68.631226, 0.5, -20, -68.631226, 0.5, -20, -50, 0.5, -10, -50, 0.5, -20, -68.631226, -0.5, -20, -68.631226, 0.5, 20, -68.631226, 0.5, -20, -68.631226, 0.5, -10, -50, 0.5, 10, -50, 0.5, -10, -48.63122, -0.5, 10, -48.63122, 0.5, -10, -48.63122, 0.5, -10, -50, 0.5, -10, -48.63122, 0.5, 10, -50, 0.5, 20, -68.631226, -0.5, 10, -50, -0.5, -10, -50, -0.5, -20, -68.631226, -0.5, 20, -68.631226, 0.5, 20, -68.631226, -0.5, -10, -50, -0.5, 10, -50, -0.5, 10, -48.63122, -0.5, 10, -48.63122, 0.5, -10, -48.63122, -0.5, 10, -48.63122, -0.5, 20, -68.631226, -0.5, 20, -50, -0.5, 10, -50, -0.5, 20, -68.631226, -0.5, 20, -68.631226, 0.5, 20, -50, -0.5, -20, -68.631226, 0.5, 10, -50, 0.5, 20, -50, 0.5, -20, -68.631226, 0.5, 20, -50, 0.5, 20, -68.631226, 0.5, 10, -50, 0.5, -10, -48.63122, 0.5, 10, -48.63122, 0.5, 20, -68.631226, 0.5, 20, -50, 0.5, 20, -50, -0.5)
 
 [node name="Node3D" type="Node3D" unique_id=1930438442]
 
@@ -70,7 +83,7 @@ environment = SubResource("Environment_omn1t")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=75092583]
 physics_interpolation_mode = 1
-transform = Transform3D(0.99999726, 0.0017879653, 0.0015034138, -0.0017879425, 0.9999984, -1.6444817e-05, -0.0015034408, 1.3756755e-05, 0.99999887, 0.00018844372, 0.017227856, 9.989756)
+transform = Transform3D(0.9999125, -0.011742021, 0.0060886163, 0.011766587, 0.9999227, -0.0040147696, -0.0060410043, 0.0040860604, 0.9999734, 0.04600599, 0.069771394, 10.06742)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1098821027]
@@ -103,17 +116,32 @@ align_transform_with_view = Callable()
 align_position_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="World" unique_id=1697233930]
+[node name="StaticBody3D" type="StaticBody3D" parent="World" unique_id=1641613755]
+
+[node name="ship" type="MeshInstance3D" parent="World/StaticBody3D" unique_id=1008089053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5372989, -47.706783, 0)
+mesh = SubResource("BoxMesh_045es")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D" unique_id=302060568]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5372989, -47.706783, 0)
+shape = SubResource("BoxShape3D_omn1t")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="World" unique_id=1815092819]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="World/StaticBody3D2" unique_id=1697233930]
 material_override = SubResource("StandardMaterial3D_61w3m")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="World/CSGCombiner3D" unique_id=1357154951]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -25, 0)
+[node name="CSGMesh3D-leftwall" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D" unique_id=1357154951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -25, 0)
 mesh = SubResource("BoxMesh_sjb42")
 
-[node name="CSGMesh3D2" type="CSGMesh3D" parent="World/CSGCombiner3D" unique_id=864425096]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -25, 0)
+[node name="CSGMesh3D2-rightwall" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D" unique_id=864425096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -25, 0)
 mesh = SubResource("BoxMesh_pdtm5")
 
-[node name="CSGMesh3D3" type="CSGMesh3D" parent="World/CSGCombiner3D" unique_id=313345579]
+[node name="CSGMesh3D3-floor" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D" unique_id=313345579]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -58.63122, 0)
 mesh = SubResource("BoxMesh_pdpul")
+
+[node name="CSGBakedCollisionShape3D2" type="CollisionShape3D" parent="World/StaticBody3D2" unique_id=1256951398]
+shape = SubResource("ConcavePolygonShape3D_045es")
