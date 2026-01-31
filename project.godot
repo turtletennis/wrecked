@@ -12,12 +12,12 @@ config_version=5
 
 config/name="wrecked"
 run/main_scene="uid://b0l8c40crtxe3"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-PhantomCameraManager="*uid://duq6jhf6unyis"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 

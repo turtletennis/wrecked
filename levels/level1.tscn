@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b0l8c40crtxe3"]
+[gd_scene load_steps=16 format=3 uid="uid://b0l8c40crtxe3"]
 
 [ext_resource type="Script" uid="uid://b8krnoe3a4atu" path="res://scripts/game_controller.gd" id="1_8hd6v"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_61w3m"]
@@ -48,52 +48,52 @@ size = Vector3(40, 20, 1)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_045es"]
 data = PackedVector3Array(-20, -50, 0.5, -10, -48.63122, 0.5, -10, -50, 0.5, -20, -50, -0.5, -10, -50, -0.5, -20, 0, -0.5, -10, -50, -0.5, -10, -48.63122, -0.5, -20, 0, -0.5, -20, 0, -0.5, -10, -48.63122, -0.5, -10, 0, -0.5, -20, -50, -0.5, -20, 0, -0.5, -20, 0, 0.5, -20, 0, -0.5, -10, 0, -0.5, -20, 0, 0.5, -10, 0, -0.5, -10, -48.63122, -0.5, -10, 0, 0.5, -20, -50, -0.5, -20, 0, 0.5, -20, -50, 0.5, -20, -50, 0.5, -10, 0, 0.5, -10, -48.63122, 0.5, -10, 0, -0.5, -10, 0, 0.5, -20, 0, 0.5, -20, -50, 0.5, -20, 0, 0.5, -10, 0, 0.5, -10, 0, 0.5, -10, -48.63122, -0.5, -10, -48.63122, 0.5, 20, -50, -0.5, 10, -48.63122, -0.5, 10, -50, -0.5, 10, -48.63122, -0.5, 20, -50, -0.5, 10, 0, -0.5, 10, 0, -0.5, 10, -48.63122, 0.5, 10, -48.63122, -0.5, 20, -50, -0.5, 20, -50, 0.5, 20, 0, -0.5, 20, -50, -0.5, 20, 0, -0.5, 10, 0, -0.5, 10, 0, -0.5, 20, 0, -0.5, 10, 0, 0.5, 10, -50, 0.5, 10, -48.63122, 0.5, 20, 0, 0.5, 10, -50, 0.5, 20, 0, 0.5, 20, -50, 0.5, 10, 0, -0.5, 10, 0, 0.5, 10, -48.63122, 0.5, 20, -50, 0.5, 20, 0, 0.5, 20, 0, -0.5, 20, 0, -0.5, 20, 0, 0.5, 10, 0, 0.5, 20, 0, 0.5, 10, -48.63122, 0.5, 10, 0, 0.5, -20, -68.631226, -0.5, -20, -50, -0.5, -20, -50, 0.5, -20, -68.631226, -0.5, 20, -68.631226, -0.5, -20, -50, -0.5, 20, -68.631226, -0.5, -10, -50, -0.5, -20, -50, -0.5, -10, -50, -0.5, 10, -48.63122, -0.5, -10, -48.63122, -0.5, -20, -68.631226, -0.5, -20, -50, 0.5, -20, -68.631226, 0.5, -20, -68.631226, 0.5, -20, -50, 0.5, -10, -50, 0.5, -20, -68.631226, -0.5, -20, -68.631226, 0.5, 20, -68.631226, 0.5, -20, -68.631226, 0.5, -10, -50, 0.5, 10, -50, 0.5, -10, -48.63122, -0.5, 10, -48.63122, 0.5, -10, -48.63122, 0.5, -10, -50, 0.5, -10, -48.63122, 0.5, 10, -50, 0.5, 20, -68.631226, -0.5, 10, -50, -0.5, -10, -50, -0.5, -20, -68.631226, -0.5, 20, -68.631226, 0.5, 20, -68.631226, -0.5, -10, -50, -0.5, 10, -50, -0.5, 10, -48.63122, -0.5, 10, -48.63122, 0.5, -10, -48.63122, -0.5, 10, -48.63122, -0.5, 20, -68.631226, -0.5, 20, -50, -0.5, 10, -50, -0.5, 20, -68.631226, -0.5, 20, -68.631226, 0.5, 20, -50, -0.5, -20, -68.631226, 0.5, 10, -50, 0.5, 20, -50, 0.5, -20, -68.631226, 0.5, 20, -50, 0.5, 20, -68.631226, 0.5, 10, -50, 0.5, -10, -48.63122, 0.5, 10, -48.63122, 0.5, 20, -68.631226, 0.5, 20, -50, 0.5, 20, -50, -0.5)
 
-[node name="Level" type="Node3D" unique_id=1930438442]
+[node name="Level" type="Node3D"]
 script = ExtResource("1_8hd6v")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1619651247]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.24999999, 0.2952254, -0.039301187, 0.954619, -0.40353692, 0.90053064, 0.16187218, 0, 0, 33.574524)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1292455453]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_omn1t")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=75092583]
+[node name="Camera3D" type="Camera3D" parent="."]
 physics_interpolation_mode = 1
 transform = Transform3D(0.9999512, 0.008911494, -0.0042720567, -0.008904802, 0.9999591, 0.0015832064, 0.004285991, -0.0015450873, 0.9999896, -0.018142218, -0.048954375, 9.948978)
 top_level = true
 
-[node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1098821027]
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("1_61w3m")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="World" type="Node" parent="." unique_id=1588333688]
+[node name="World" type="Node" parent="."]
 
-[node name="Player" parent="World" unique_id=599723844 instance=ExtResource("2_pdpul")]
+[node name="Player" parent="World" instance=ExtResource("2_pdpul")]
 
-[node name="Shipwreck" parent="World" unique_id=1503740162 instance=ExtResource("3_8hd6v")]
+[node name="Shipwreck" parent="World" instance=ExtResource("3_8hd6v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -46.96331, 0)
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="World" unique_id=1815092819]
+[node name="StaticBody3D2" type="StaticBody3D" parent="World"]
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="World/StaticBody3D2" unique_id=1697233930]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="World/StaticBody3D2"]
 material_override = SubResource("StandardMaterial3D_61w3m")
 
-[node name="CSGMesh3D-leftwall" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D" unique_id=1357154951]
+[node name="CSGMesh3D-leftwall" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -25, 0)
 mesh = SubResource("BoxMesh_sjb42")
 
-[node name="CSGMesh3D2-rightwall" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D" unique_id=864425096]
+[node name="CSGMesh3D2-rightwall" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -25, 0)
 mesh = SubResource("BoxMesh_pdtm5")
 
-[node name="CSGMesh3D3-floor" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D" unique_id=313345579]
+[node name="CSGMesh3D3-floor" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -58.63122, 0)
 mesh = SubResource("BoxMesh_pdpul")
 
-[node name="CSGBakedCollisionShape3D2" type="CollisionShape3D" parent="World/StaticBody3D2" unique_id=1256951398]
+[node name="CSGBakedCollisionShape3D2" type="CollisionShape3D" parent="World/StaticBody3D2"]
 shape = SubResource("ConcavePolygonShape3D_045es")
 
 [connection signal="ship_reached_by_player" from="World/Shipwreck" to="." method="_on_shipwreck_ship_reached_by_player"]
