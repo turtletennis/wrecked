@@ -60,7 +60,7 @@ environment = SubResource("Environment_omn1t")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=75092583]
 physics_interpolation_mode = 1
-transform = Transform3D(0.99969244, -0.021619933, 0.012151208, 0.021744808, 0.9997111, -0.010240416, -0.011926301, 0.010501492, 0.99987376, 0.11734857, 0.13925329, 10.124605)
+transform = Transform3D(0.9999792, 0.004899935, -0.0041984315, -0.004882165, 0.99997914, 0.004232376, 0.0042190826, -0.00421179, 0.99998224, -0.048499595, -0.04811105, 9.972027)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D" unique_id=1098821027]
