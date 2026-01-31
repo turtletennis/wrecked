@@ -9,7 +9,7 @@ var input_dir:Vector2
 
 @export var blindness:float = 0.0
 @export var blindness_rate:float = 0.1
-@export var blindness_drain_rate:float = 10.0
+@export var blindness_drain_rate:float = 5.0
 
 func _process(delta: float) -> void:
 	input_dir = Input.get_vector("left","right","up","down")
@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	# mask blindness
-	if position.y < 0:
+	if !GameController.player_in_air and position.y < 0:
 		blindness += blindness_rate
 	
 	if Input.is_physical_key_pressed(KEY_E):
