@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y = input_dir.y * speed * -1
 	velocity.z = 0
 	if(input_dir.length_squared() > deadZone):
-		var desiredAngle =PI/2 - input_dir.angle()
+		var desiredAngle =3*PI/2 - input_dir.angle()
 		var angle = lerp_angle(global_rotation.z,desiredAngle,rotationSpeed*delta)
 		rotation =Vector3(rotation.x,rotation.y,angle)
 	move_and_slide()
