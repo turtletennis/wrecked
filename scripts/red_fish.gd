@@ -6,11 +6,12 @@ enum State {WANDERING, CHASING}
 
 @export var state: State = State.WANDERING
 
+@export_group("Tuning params")
 @export var acceleration: float = 6.0
 @export var turn_rate: float = 3.0
 @export var steering_bias = 0.65
 @export var lateral_drag = 5.0
-@export var pushing_power:float = 5.0
+@export var pushing_power: float = 5.0
 
 @export_group("Wandering Params")
 @export var wanderingSpeed: float = 1.0
@@ -26,6 +27,13 @@ var nextTarget: int = 0
 
 
 var forward_dir: Vector3
+
+@export_group("Fish wiggle")
+@export var wiggle_amplitude := 0.35 # sideways strength
+@export var wiggle_frequency := 7.0 # tail speed
+@export var wiggle_speed_scale := 0.3 # more wiggle when moving faster
+
+var wiggle_time := 0.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -86,16 +94,33 @@ func go_towards_target(target: Vector3, speed: float, delta: float) -> void:
 	var lateral := velocity - velocity.project(forward_dir)
 	velocity -= lateral * lateral_drag * delta
 
+	# --- Fish wiggle ---
+	wiggle_time += delta
+
+	# Sideways relative to facing (planar)
+	var side := forward_dir.cross(Vector3.UP).cross(forward_dir).normalized()
+
+	# Speed-based strength (0 when stopped)
+	var speed_factor := clampf(velocity.length() * wiggle_speed_scale, 0.0, 1.0)
+
+	# Sinusoidal lateral offset
+	var wiggle := side * sin(wiggle_time * wiggle_frequency) * wiggle_amplitude * speed_factor
+
+	velocity += wiggle
+	velocity.z = 0.0
+
+
 	# --- Move ---
 	var collision = move_and_collide(velocity * delta)
-	if(collision):
+	if (collision):
 		var collider = collision.get_collider()
-		if(collider is Player):
+		if (collider is Player):
 			var player = collider as Player
-			player.push(velocity*pushing_power)
+			player.push(velocity * pushing_power)
 
 	# --- Face forward ---
 	look_at(global_position + forward_dir, Vector3.UP)
 
 func check_for_player_nearby(detectionRadius):
+	if GameController.player_in_air: return false
 	return player.position.distance_to(position) <= detectionRadius
