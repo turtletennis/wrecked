@@ -1,6 +1,6 @@
 extends Fish
 
-class_name RedFish
+class_name YellowFish
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,5 +24,10 @@ func _physics_process(delta: float) -> void:
 		go_towards_target(player.position, playerChaseSpeed, delta)
 		if !check_for_player_nearby(playerIgnoreRadius):
 			change_state(State.WANDERING)
+	elif state == State.ATTACKING:
+		player.velocity.y += 0.1
 	else:
 		push_error("Enemy state unimplemented! State: ", State.keys()[state])
+
+func on_player_hit():
+	change_state(State.ATTACKING)
