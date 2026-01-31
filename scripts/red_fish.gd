@@ -1,4 +1,4 @@
-extends Node3D
+extends CharacterBody3D
 
 class_name RedFish
 
@@ -23,7 +23,7 @@ enum State {WANDERING, CHASING}
 
 var nextTarget: int = 0
 
-var velocity: Vector3
+
 var forward_dir: Vector3
 
 
@@ -86,7 +86,7 @@ func go_towards_target(target: Vector3, speed: float, delta: float) -> void:
 	velocity -= lateral * lateral_drag * delta
 
 	# --- Move ---
-	global_position += velocity * delta
+	move_and_collide(velocity * delta)
 
 	# --- Face forward ---
 	look_at(global_position + forward_dir, Vector3.UP)
