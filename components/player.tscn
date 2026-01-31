@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlarn7cbecn5r"]
+[gd_scene load_steps=8 format=3 uid="uid://dlarn7cbecn5r"]
 
 [ext_resource type="Script" uid="uid://mp3htje3cn18" path="res://scripts/player.gd" id="1_5odhx"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_1kub6"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_kuobi"]
+[ext_resource type="PackedScene" uid="uid://dxq5fvxawa2wi" path="res://models/diver.glb" id="4_5odhx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pdtm5"]
 
@@ -15,6 +16,7 @@ script = ExtResource("3_kuobi")
 script = ExtResource("1_5odhx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_pdtm5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -31,3 +33,6 @@ follow_offset = Vector3(0, 0, 10)
 align_transform_with_view = Callable()
 align_position_with_view = Callable()
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="diver" parent="." instance=ExtResource("4_5odhx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0005728, 0)
