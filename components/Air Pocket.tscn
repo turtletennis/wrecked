@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cctgl6hsfvgr7"]
+
+[ext_resource type="Script" uid="uid://rwo6pdjggcr8" path="res://scripts/air_pocket.gd" id="1_kadtr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ose7g"]
+
+[node name="AirPocket" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_kadtr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_ose7g")
