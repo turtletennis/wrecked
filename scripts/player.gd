@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 			animationPlayer.play(swimAnimationName)
 	else:
 		animationPlayer.pause()
+	global_position.z = 0
 	move_and_slide()
 
 	# mask blindness
