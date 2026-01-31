@@ -1,4 +1,7 @@
 extends CharacterBody3D
+
+class_name Player
+
 @export var speed:float = 10
 var input_dir:Vector2
 
