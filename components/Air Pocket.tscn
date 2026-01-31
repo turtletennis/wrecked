@@ -36,6 +36,8 @@ data = PackedVector3Array(-1.7, -0.5, -0.5, -0.70000005, -0.5, 0.5, -0.70000005,
 [node name="AirPocket" type="Node3D"]
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_kadtr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
@@ -57,6 +59,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 mesh = SubResource("BoxMesh_x5it0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 7
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6t7w0")

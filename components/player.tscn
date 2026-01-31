@@ -13,6 +13,8 @@
 script = ExtResource("3_kuobi")
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("animationPlayer")]
+collision_mask = 7
+axis_lock_linear_z = true
 script = ExtResource("1_5odhx")
 animationPlayer = NodePath("diver/AnimationPlayer")
 

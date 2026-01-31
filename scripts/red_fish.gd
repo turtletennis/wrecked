@@ -10,6 +10,7 @@ enum State {WANDERING, CHASING}
 @export var turn_rate: float = 3.0
 @export var steering_bias = 0.65
 @export var lateral_drag = 5.0
+@export var pushing_power:float = 5.0
 
 @export_group("Wandering Params")
 @export var wanderingSpeed: float = 1.0
@@ -86,7 +87,12 @@ func go_towards_target(target: Vector3, speed: float, delta: float) -> void:
 	velocity -= lateral * lateral_drag * delta
 
 	# --- Move ---
-	move_and_collide(velocity * delta)
+	var collision = move_and_collide(velocity * delta)
+	if(collision):
+		var collider = collision.get_collider()
+		if(collider is Player):
+			var player = collider as Player
+			player.push(velocity*pushing_power)
 
 	# --- Face forward ---
 	look_at(global_position + forward_dir, Vector3.UP)
