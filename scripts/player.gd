@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	if !GameController.player_in_air and position.y < 0:
 		blindness += blindness_rate
 	
-	if Input.is_physical_key_pressed(KEY_E):
+	if Input.is_action_pressed("mask"):
 		if GameController.player_in_air or position.y > 0:
 			blindness -= blindness_drain_rate
 		else:
