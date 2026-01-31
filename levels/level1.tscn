@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b0l8c40crtxe3"]
+[gd_scene load_steps=21 format=3 uid="uid://b0l8c40crtxe3"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_61w3m"]
 [ext_resource type="PackedScene" uid="uid://dlarn7cbecn5r" path="res://components/player.tscn" id="2_pdpul"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://d2dalhv3s25k3" path="res://textures/waterwornstone1_Roughness.png" id="8_omn1t"]
 [ext_resource type="PackedScene" uid="uid://bfwg06qloc534" path="res://components/Red Fish.tscn" id="9_omn1t"]
 [ext_resource type="PackedScene" uid="uid://cctgl6hsfvgr7" path="res://components/Air Pocket.tscn" id="9_yydhl"]
+[ext_resource type="Shader" uid="uid://bj635dippc5io" path="res://shaders/Vignette.gdshader" id="10_lf3p4"]
+[ext_resource type="Script" uid="uid://bov3m0kt1gqjo" path="res://scripts/VignetteController.gd" id="11_yydhl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8hd6v"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -49,6 +51,12 @@ size = Vector3(40, 20, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_045es"]
 data = PackedVector3Array(-20, -50, 0.5, -10, -48.63122, 0.5, -10, -50, 0.5, -20, -50, -0.5, -10, -50, -0.5, -20, 0, -0.5, -10, -50, -0.5, -10, -48.63122, -0.5, -20, 0, -0.5, -20, 0, -0.5, -10, -48.63122, -0.5, -10, 0, -0.5, -20, -50, -0.5, -20, 0, -0.5, -20, 0, 0.5, -20, 0, -0.5, -10, 0, -0.5, -20, 0, 0.5, -10, 0, -0.5, -10, -48.63122, -0.5, -10, 0, 0.5, -20, -50, -0.5, -20, 0, 0.5, -20, -50, 0.5, -20, -50, 0.5, -10, 0, 0.5, -10, -48.63122, 0.5, -10, 0, -0.5, -10, 0, 0.5, -20, 0, 0.5, -20, -50, 0.5, -20, 0, 0.5, -10, 0, 0.5, -10, 0, 0.5, -10, -48.63122, -0.5, -10, -48.63122, 0.5, 20, -50, -0.5, 10, -48.63122, -0.5, 10, -50, -0.5, 10, -48.63122, -0.5, 20, -50, -0.5, 10, 0, -0.5, 10, 0, -0.5, 10, -48.63122, 0.5, 10, -48.63122, -0.5, 20, -50, -0.5, 20, -50, 0.5, 20, 0, -0.5, 20, -50, -0.5, 20, 0, -0.5, 10, 0, -0.5, 10, 0, -0.5, 20, 0, -0.5, 10, 0, 0.5, 10, -50, 0.5, 10, -48.63122, 0.5, 20, 0, 0.5, 10, -50, 0.5, 20, 0, 0.5, 20, -50, 0.5, 10, 0, -0.5, 10, 0, 0.5, 10, -48.63122, 0.5, 20, -50, 0.5, 20, 0, 0.5, 20, 0, -0.5, 20, 0, -0.5, 20, 0, 0.5, 10, 0, 0.5, 20, 0, 0.5, 10, -48.63122, 0.5, 10, 0, 0.5, -20, -68.631226, -0.5, -20, -50, -0.5, -20, -50, 0.5, -20, -68.631226, -0.5, 20, -68.631226, -0.5, -20, -50, -0.5, 20, -68.631226, -0.5, -10, -50, -0.5, -20, -50, -0.5, -10, -50, -0.5, 10, -48.63122, -0.5, -10, -48.63122, -0.5, -20, -68.631226, -0.5, -20, -50, 0.5, -20, -68.631226, 0.5, -20, -68.631226, 0.5, -20, -50, 0.5, -10, -50, 0.5, -20, -68.631226, -0.5, -20, -68.631226, 0.5, 20, -68.631226, 0.5, -20, -68.631226, 0.5, -10, -50, 0.5, 10, -50, 0.5, -10, -48.63122, -0.5, 10, -48.63122, 0.5, -10, -48.63122, 0.5, -10, -50, 0.5, -10, -48.63122, 0.5, 10, -50, 0.5, 20, -68.631226, -0.5, 10, -50, -0.5, -10, -50, -0.5, -20, -68.631226, -0.5, 20, -68.631226, 0.5, 20, -68.631226, -0.5, -10, -50, -0.5, 10, -50, -0.5, 10, -48.63122, -0.5, 10, -48.63122, 0.5, -10, -48.63122, -0.5, 10, -48.63122, -0.5, 20, -68.631226, -0.5, 20, -50, -0.5, 10, -50, -0.5, 20, -68.631226, -0.5, 20, -68.631226, 0.5, 20, -50, -0.5, -20, -68.631226, 0.5, 10, -50, 0.5, 20, -50, 0.5, -20, -68.631226, 0.5, 20, -50, 0.5, 20, -68.631226, 0.5, 10, -50, 0.5, -10, -48.63122, 0.5, 10, -48.63122, 0.5, 20, -68.631226, 0.5, 20, -50, 0.5, 20, -50, -0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omn1t"]
+shader = ExtResource("10_lf3p4")
+shader_parameter/visible_radius = 0.182000008645
+shader_parameter/softness = 0.3
+shader_parameter/vignette_color = Color(0.10980392, 0.32156864, 0.6, 1)
 
 [node name="Level" type="Node3D"]
 
@@ -112,12 +120,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7572207, -12.858994, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2161784, -12.899416, 0)
 targetNodes = [NodePath("../Enemy TargetNodes/Redfish 1"), NodePath("../Enemy TargetNodes/RedFish 2")]
 
-[node name="UI" type="Node" parent="."]
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="UI" node_paths=PackedStringArray("player")]
 color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(99, 45, 214, 45, 211, 144, 96, 144)
 script = ExtResource("8_045es")
+player = NodePath("../../World/Player")
+
+[node name="ColorRect" type="ColorRect" parent="UI" node_paths=PackedStringArray("player")]
+material = SubResource("ShaderMaterial_omn1t")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_yydhl")
 player = NodePath("../../World/Player")
 
 [connection signal="ship_reached_by_player" from="World/Shipwreck" to="." method="_on_shipwreck_ship_reached_by_player"]
