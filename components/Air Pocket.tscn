@@ -1,8 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://cctgl6hsfvgr7"]
+[gd_scene load_steps=10 format=3 uid="uid://cctgl6hsfvgr7"]
 
 [ext_resource type="Script" uid="uid://rwo6pdjggcr8" path="res://scripts/air_pocket.gd" id="1_kadtr"]
+[ext_resource type="Texture2D" uid="uid://cc5q2014hpmbw" path="res://textures/waterwornstone1_Base_Color.png" id="2_6t7w0"]
+[ext_resource type="Texture2D" uid="uid://ctaf7tdhldxog" path="res://textures/waterwornstone1_Normal.png" id="3_m2ft2"]
+[ext_resource type="Texture2D" uid="uid://d2dalhv3s25k3" path="res://textures/waterwornstone1_Roughness.png" id="4_cdwv8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ose7g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_expkg"]
+albedo_texture = ExtResource("2_6t7w0")
+roughness_texture = ExtResource("4_cdwv8")
+normal_enabled = true
+normal_texture = ExtResource("3_m2ft2")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_4fovy"]
+lightmap_size_hint = Vector2i(14, 31)
+add_uv2 = true
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0687s"]
+lightmap_size_hint = Vector2i(14, 31)
+add_uv2 = true
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x5it0"]
+lightmap_size_hint = Vector2i(19, 26)
+add_uv2 = true
+size = Vector3(2, 1, 1)
 
 [node name="AirPocket" type="Node3D"]
 
@@ -11,3 +37,18 @@ script = ExtResource("1_kadtr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_ose7g")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_expkg")
+
+[node name="CSGMesh3D-leftwall" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.5, 0)
+mesh = SubResource("BoxMesh_4fovy")
+
+[node name="CSGMesh3D2-rightwall" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.5, 0)
+mesh = SubResource("BoxMesh_0687s")
+
+[node name="CSGMesh3D3-Ceiling" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+mesh = SubResource("BoxMesh_x5it0")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvbs0uxm3e8lb"]
+
+[ext_resource type="PackedScene" uid="uid://bfwg06qloc534" path="res://components/Red Fish.tscn" id="1_kkhq5"]
+
+[node name="RedfishEnemy" type="Node3D"]
+
+[node name="RedFish" parent="." instance=ExtResource("1_kkhq5")]
+
+[node name="Target 1" type="Node3D" parent="."]
+
+[node name="Target 2" type="Node3D" parent="."]

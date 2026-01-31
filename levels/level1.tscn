@@ -106,20 +106,73 @@ mesh = SubResource("BoxMesh_pdpul")
 shape = SubResource("ConcavePolygonShape3D_045es")
 
 [node name="AirPocket" parent="World" instance=ExtResource("9_yydhl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5937147, -6.865057, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.85844, -10.069952, 0)
 
-[node name="Enemy TargetNodes" type="Node3D" parent="World"]
+[node name="AirPocket2" parent="World" instance=ExtResource("9_yydhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.109428, -19.983345, 0)
 
-[node name="Redfish 1" type="Node3D" parent="World/Enemy TargetNodes"]
+[node name="AirPocket3" parent="World" instance=ExtResource("9_yydhl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.89243, -32.80081, 0)
+
+[node name="Enemies2" type="Node" parent="World"]
+
+[node name="Redfish1" type="Node" parent="World/Enemies2"]
+
+[node name="RedFish1 Enemy" parent="World/Enemies2/Redfish1" node_paths=PackedStringArray("targetNodes", "player") instance=ExtResource("9_omn1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2161784, -12.899416, 0)
+targetNodes = [NodePath("../Redfish1 Target 1"), NodePath("../RedFish1 Target 2")]
+player = NodePath("../../../Player")
+
+[node name="Redfish1 Target 1" type="Node3D" parent="World/Enemies2/Redfish1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.647591, -13.139854, 0)
 
-[node name="RedFish 2" type="Node3D" parent="World/Enemy TargetNodes"]
+[node name="RedFish1 Target 2" type="Node3D" parent="World/Enemies2/Redfish1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7572207, -12.858994, 0)
 
-[node name="RedFish" parent="World" node_paths=PackedStringArray("targetNodes", "player") instance=ExtResource("9_omn1t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2161784, -12.899416, 0)
-targetNodes = [NodePath("../Enemy TargetNodes/Redfish 1"), NodePath("../Enemy TargetNodes/RedFish 2")]
-player = NodePath("../Player")
+[node name="Redfish2" type="Node" parent="World/Enemies2"]
+
+[node name="RedFish2 Enemy" parent="World/Enemies2/Redfish2" node_paths=PackedStringArray("targetNodes", "player") instance=ExtResource("9_omn1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2161784, -26.80092, 0)
+targetNodes = [NodePath("../Redfish2 Target 1"), NodePath("../RedFish2 Target 2")]
+player = NodePath("../../../Player")
+
+[node name="Redfish2 Target 1" type="Node3D" parent="World/Enemies2/Redfish2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.647591, -27.459736, 0)
+
+[node name="RedFish2 Target 2" type="Node3D" parent="World/Enemies2/Redfish2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7572207, -27.183113, 0)
+
+[node name="Redfish3" type="Node" parent="World/Enemies2"]
+
+[node name="RedFish3 Enemy" parent="World/Enemies2/Redfish3" node_paths=PackedStringArray("targetNodes", "player") instance=ExtResource("9_omn1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2161784, -39.4107, 0)
+targetNodes = [NodePath("../Redfish3 Target 1"), NodePath("../RedFish3 Target 2")]
+player = NodePath("../../../Player")
+
+[node name="Redfish3 Target 1" type="Node3D" parent="World/Enemies2/Redfish3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.647591, -39.13094, 0)
+
+[node name="RedFish3 Target 2" type="Node3D" parent="World/Enemies2/Redfish3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7572207, -39.301865, 0)
+
+[node name="Redfish4" type="Node" parent="World/Enemies2"]
+
+[node name="RedFish4 Enemy" parent="World/Enemies2/Redfish4" node_paths=PackedStringArray("targetNodes", "player") instance=ExtResource("9_omn1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.720526, -8.3617115, 0)
+targetNodes = [NodePath("../Redfish4 Target 1"), NodePath("../RedFish4 Target 2"), NodePath("../RedFish4 Target 3"), NodePath("../RedFish4 Target 4")]
+player = NodePath("../../../Player")
+
+[node name="Redfish4 Target 1" type="Node3D" parent="World/Enemies2/Redfish4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33128262, -7.8771567, 0)
+
+[node name="RedFish4 Target 2" type="Node3D" parent="World/Enemies2/Redfish4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.834793, -22.315283, 0)
+
+[node name="RedFish4 Target 3" type="Node3D" parent="World/Enemies2/Redfish4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0138497, -35.647934, 0)
+
+[node name="RedFish4 Target 4" type="Node3D" parent="World/Enemies2/Redfish4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0157824, -37.78757, 0)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
