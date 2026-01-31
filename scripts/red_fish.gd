@@ -6,7 +6,10 @@ enum State {WANDERING, CHASING}
 
 @export var state: State = State.WANDERING
 
-@export var acceleration: float = 1.0
+@export var acceleration: float = 6.0
+@export var turn_rate: float = 3.0
+@export var steering_bias = 0.65
+@export var lateral_drag = 5.0
 
 @export_group("Wandering Params")
 @export var wanderingSpeed: float = 1.0
@@ -21,6 +24,7 @@ enum State {WANDERING, CHASING}
 var nextTarget: int = 0
 
 var velocity: Vector3
+var forward_dir: Vector3
 
 
 # Called when the node enters the scene tree for the first time.
@@ -52,10 +56,40 @@ func change_state(newState: State):
 	print_debug("Changing Enemy state from ", State.keys()[state], " to ", State.keys()[newState])
 	state = newState
 
-func go_towards_target(target:Vector3, speed: float, delta: float):
-	var desired_velocity = (target - position).normalized() * speed
+func go_towards_target(target: Vector3, speed: float, delta: float) -> void:
+	var to_target := target - global_position
+	to_target.z = 0.0
+	if to_target.length_squared() < 0.0001:
+		return
+
+	var desired_dir := to_target.normalized()
+
+	# --- Compute steering direction ---
+	var velocity_dir := forward_dir
+	if velocity.length_squared() > 0.0001:
+		velocity_dir = velocity.normalized()
+
+	var steering_dir := velocity_dir.lerp(desired_dir, steering_bias).normalized()
+
+	# --- Turn ONCE toward steering direction ---
+	forward_dir = forward_dir.slerp(steering_dir, turn_rate * delta)
+	forward_dir.z = 0.0
+	forward_dir = forward_dir.normalized()
+
+	# --- Accelerate along forward ---
+	var desired_velocity := forward_dir * speed
 	velocity = velocity.move_toward(desired_velocity, acceleration * delta)
-	position += velocity * delta
+	velocity.z = 0.0
+
+	# --- Lateral drag (kills ice) ---
+	var lateral := velocity - velocity.project(forward_dir)
+	velocity -= lateral * lateral_drag * delta
+
+	# --- Move ---
+	global_position += velocity * delta
+
+	# --- Face forward ---
+	look_at(global_position + forward_dir, Vector3.UP)
 
 func check_for_player_nearby(detectionRadius):
 	return player.position.distance_to(position) <= detectionRadius
