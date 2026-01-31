@@ -7,6 +7,10 @@ class_name Player
 var deadZone:float = 0.1
 var input_dir:Vector2
 
+@export var blindness:float = 0.0
+@export var blindness_rate:float = 0.1
+@export var blindness_drain_rate:float = 10.0
+
 func _process(delta: float) -> void:
 	input_dir = Input.get_vector("left","right","up","down")
 
@@ -19,3 +23,15 @@ func _physics_process(delta: float) -> void:
 		var angle = lerp_angle(global_rotation.z,desiredAngle,rotationSpeed*delta)
 		rotation =Vector3(rotation.x,rotation.y,angle)
 	move_and_slide()
+
+	# mask blindness
+	if position.y < 0:
+		blindness += blindness_rate
+	
+	if Input.is_physical_key_pressed(KEY_E):
+		if GameController.player_in_air or position.y > 0:
+			blindness -= blindness_drain_rate
+		else:
+			blindness += blindness_drain_rate
+
+	blindness = clampf(blindness, 0.0, 100.0)

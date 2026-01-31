@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0l8c40crtxe3"]
+[gd_scene load_steps=17 format=3 uid="uid://b0l8c40crtxe3"]
 
 [ext_resource type="Script" uid="uid://b8krnoe3a4atu" path="res://scripts/game_controller.gd" id="1_8hd6v"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_61w3m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://csupmqbhgw8ef" path="res://components/shipwreck.tscn" id="3_8hd6v"]
 [ext_resource type="Texture2D" uid="uid://cc5q2014hpmbw" path="res://textures/waterwornstone1_Base_Color.png" id="6_pdpul"]
 [ext_resource type="Texture2D" uid="uid://ctaf7tdhldxog" path="res://textures/waterwornstone1_Normal.png" id="7_045es"]
+[ext_resource type="Script" uid="uid://bc0te82slhin3" path="res://scripts/test_widget.gd" id="8_045es"]
 [ext_resource type="Texture2D" uid="uid://d2dalhv3s25k3" path="res://textures/waterwornstone1_Roughness.png" id="8_omn1t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8hd6v"]
@@ -60,7 +61,7 @@ environment = SubResource("Environment_omn1t")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 physics_interpolation_mode = 1
-transform = Transform3D(0.9999512, 0.008911494, -0.0042720567, -0.008904802, 0.9999591, 0.0015832064, 0.004285991, -0.0015450873, 0.9999896, -0.018142218, -0.048954375, 9.948978)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -95,5 +96,11 @@ mesh = SubResource("BoxMesh_pdpul")
 
 [node name="CSGBakedCollisionShape3D2" type="CollisionShape3D" parent="World/StaticBody3D2"]
 shape = SubResource("ConcavePolygonShape3D_045es")
+
+[node name="Polygon2D" type="Polygon2D" parent="." node_paths=PackedStringArray("player")]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(99, 45, 214, 45, 211, 144, 96, 144)
+script = ExtResource("8_045es")
+player = NodePath("../World/Player")
 
 [connection signal="ship_reached_by_player" from="World/Shipwreck" to="." method="_on_shipwreck_ship_reached_by_player"]
