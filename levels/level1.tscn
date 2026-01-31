@@ -116,9 +116,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.647591, -13.139854, 0)
 [node name="RedFish 2" type="Node3D" parent="World/Enemy TargetNodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7572207, -12.858994, 0)
 
-[node name="RedFish" parent="World" node_paths=PackedStringArray("targetNodes") instance=ExtResource("9_omn1t")]
+[node name="RedFish" parent="World" node_paths=PackedStringArray("targetNodes", "player") instance=ExtResource("9_omn1t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2161784, -12.899416, 0)
 targetNodes = [NodePath("../Enemy TargetNodes/Redfish 1"), NodePath("../Enemy TargetNodes/RedFish 2")]
+player = NodePath("../Player")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
