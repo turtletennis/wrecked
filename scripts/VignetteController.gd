@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 		return
 	
 	var blindness_ratio = clamp(player.blindness / 100.0, 0.0, 1.0)
-	blindness_ratio = 1.0 - pow(blindness_ratio, 2.0) # FPS-style curve
+	blindness_ratio = 1.0 - pow(blindness_ratio, 1.5) # FPS-style curve
 
 	# Smooth curve feels nicer than linear
 	var radius = lerp(min_radius, 1.0, blindness_ratio)
