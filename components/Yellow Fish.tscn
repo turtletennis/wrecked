@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnhexmhyiykuk"]
 
 [ext_resource type="Script" uid="uid://cc08uf72ko0ea" path="res://scripts/Enemies/yellow_fish.gd" id="1_q42kx"]
-[ext_resource type="PackedScene" uid="uid://dgjpl47llaqmx" path="res://components/Enemies/ramming_fish_yellow.tscn" id="2_5rkf8"]
+[ext_resource type="PackedScene" path="res://components/Enemies/ramming_fish_yellow.tscn" id="2_5rkf8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lc1yh"]
 size = Vector3(1, 0.657, 1.215)

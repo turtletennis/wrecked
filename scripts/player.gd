@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	velocity.y = input_dir.y * speed * -1
 	velocity.z = 0
 	velocity += push_total_force
-	push_total_force = push_total_force.lerp(Vector3.ZERO,push_decay_amount*delta)
+	push_total_force = push_total_force.slerp(Vector3.ZERO,push_decay_amount*delta)
 	if(input_dir.length_squared() > deadZone):
 		var desiredAngle =3*PI/2 - input_dir.angle()
 		var angle = lerp_angle(global_rotation.z,desiredAngle,rotationSpeed*delta)
@@ -54,13 +54,13 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	if position.y > 0 and !player_surfaced:
+	if global_position.y > 0 and !player_surfaced:
 		print_debug("Surfaced!")
 		GameController.player_in_air = true
 		player_surfaced = true
 		while yellowFishAttached.size() > 0:
 			detach_yellow_fish()
-	elif position.y < 0 and player_surfaced:
+	elif global_position.y < 0 and player_surfaced:
 		print_debug("Going down!")
 		GameController.player_in_air = false
 		player_surfaced = false
@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 
 	blindness = clampf(blindness, 0.0, 100.0)
 
-	position.y = clampf(position.y, -1000.0, 1.0)
+	global_position.y = clampf(global_position.y, -1000.0, 1.0)
 
 func push(amount:Vector3):
 	push_total_force += amount
