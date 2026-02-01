@@ -9,7 +9,11 @@ class_name Player
 var deadZone:float = 0.1
 var input_dir:Vector2
 
-var yellowFishAttached: int = 0
+var yellowFishAttached: Array[YellowFish] = []
+var yellowFishShake: int = 0
+var yellowFishUpForce: float = 0.0
+
+var player_surfaced = false
 
 @export var blindness:float = 0.0
 @export var blindness_rate:float = 0.1
@@ -21,6 +25,12 @@ func _ready() -> void:
 	animationPlayer.pause()
 func _process(delta: float) -> void:
 	input_dir = Input.get_vector("left","right","up","down")
+	if yellowFishAttached.size() > 0:
+		if Input.is_action_just_pressed("shake"):
+			yellowFishShake += 1
+		if yellowFishShake >= 5:
+			detach_yellow_fish()
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -39,16 +49,28 @@ func _physics_process(delta: float) -> void:
 		animationPlayer.pause()
 	global_position.z = 0
 
-	velocity.y += yellowFishAttached * 0.1
+	yellowFishUpForce = lerpf(yellowFishUpForce, (yellowFishAttached.size() * 5), 0.05)
+	velocity.y += yellowFishUpForce
 
 	move_and_slide()
 
+	if position.y > 0 and !player_surfaced:
+		print_debug("Surfaced!")
+		GameController.player_in_air = true
+		player_surfaced = true
+		while yellowFishAttached.size() > 0:
+			detach_yellow_fish()
+	elif position.y < 0 and player_surfaced:
+		print_debug("Going down!")
+		GameController.player_in_air = false
+		player_surfaced = false
+
 	# mask blindness
-	if !GameController.player_in_air and position.y < 0:
+	if !GameController.player_in_air:
 		blindness += blindness_rate
 	
 	if Input.is_action_pressed("mask"):
-		if GameController.player_in_air or position.y > 0:
+		if GameController.player_in_air:
 			blindness -= blindness_drain_rate
 		else:
 			blindness += blindness_drain_rate
@@ -59,3 +81,8 @@ func _physics_process(delta: float) -> void:
 
 func push(amount:Vector3):
 	push_total_force += amount
+
+func detach_yellow_fish():
+	yellowFishAttached[-1].shake_off()
+	yellowFishAttached.pop_back()
+	yellowFishShake = 0

@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func state_machine_tick(delta: float) -> void:
 	if state == State.WANDERING:
 		#print_debug(targetNodes.size(),nextTarget,name)
 		if (position.distance_squared_to(targetNodes[nextTarget].position) <= 0.01): # 0.1^2
