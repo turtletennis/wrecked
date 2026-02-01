@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://11o3xjxpvxbh"]
+
+[ext_resource type="Texture2D" uid="uid://cc5q2014hpmbw" path="res://textures/waterwornstone1_Base_Color.png" id="1_7o2k3"]
+[ext_resource type="Texture2D" uid="uid://ctaf7tdhldxog" path="res://textures/waterwornstone1_Normal.png" id="2_5excr"]
+[ext_resource type="Texture2D" uid="uid://d2dalhv3s25k3" path="res://textures/waterwornstone1_Roughness.png" id="3_ffxb5"]
+
+[resource]
+albedo_texture = ExtResource("1_7o2k3")
+roughness_texture = ExtResource("3_ffxb5")
+normal_enabled = true
+normal_texture = ExtResource("2_5excr")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
