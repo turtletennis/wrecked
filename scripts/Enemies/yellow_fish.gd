@@ -2,6 +2,8 @@ extends Fish
 
 class_name YellowFish
 
+@export var attachOffset: Vector3
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if targetNodes.size() < 1:
@@ -25,7 +27,8 @@ func _physics_process(delta: float) -> void:
 		if !check_for_player_nearby(playerIgnoreRadius):
 			change_state(State.WANDERING)
 	elif state == State.ATTACKING:
-		player.velocity.y += 0.1
+		player.yellowFishAttached += 1
+		global_position = player.global_position + attachOffset
 	else:
 		push_error("Enemy state unimplemented! State: ", State.keys()[state])
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnhexmhyiykuk"]
 
-[ext_resource type="Script" uid="uid://be0vqfna6duxo" path="res://scripts/Enemies/red_fish.gd" id="1_q42kx"]
+[ext_resource type="Script" uid="uid://cc08uf72ko0ea" path="res://scripts/Enemies/yellow_fish.gd" id="1_q42kx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lc1yh"]
 

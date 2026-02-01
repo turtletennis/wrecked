@@ -28,4 +28,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		push_error("Enemy state unimplemented! State: ", State.keys()[state])
 
-	
+func on_player_hit():
+	player.push(velocity * pushing_power)

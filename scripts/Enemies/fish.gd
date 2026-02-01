@@ -126,4 +126,4 @@ func check_for_player_nearby(detectionRadius):
 	return player.position.distance_to(position) <= detectionRadius
 
 func on_player_hit():
-	player.push(velocity * pushing_power)
+	pass

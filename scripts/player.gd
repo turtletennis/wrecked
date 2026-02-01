@@ -9,6 +9,7 @@ class_name Player
 var deadZone:float = 0.1
 var input_dir:Vector2
 
+var yellowFishAttached: int = 0
 
 @export var blindness:float = 0.0
 @export var blindness_rate:float = 0.1
@@ -37,6 +38,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		animationPlayer.pause()
 	global_position.z = 0
+
+	velocity.y += yellowFishAttached * 0.1
+
 	move_and_slide()
 
 	# mask blindness
