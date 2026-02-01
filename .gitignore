@@ -29,3 +29,4 @@ mono_crash.*.json
 *.vsix
 *.painter_lock
 *_autosave_*.spp
+/builds/*
