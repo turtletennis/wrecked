@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://diylsxm65gdt1"]
+
+[node name="Title" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0

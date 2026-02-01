@@ -385,6 +385,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("11_vuw6k")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer-GameOver"]
 layout_mode = 2
@@ -421,6 +422,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("11_vuw6k")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer-Win"]
 layout_mode = 2
