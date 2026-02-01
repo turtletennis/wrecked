@@ -8,12 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://cc5q2014hpmbw" path="res://textures/waterwornstone1_Base_Color.png" id="6_pdpul"]
 [ext_resource type="Texture2D" uid="uid://ctaf7tdhldxog" path="res://textures/waterwornstone1_Normal.png" id="7_045es"]
 [ext_resource type="Material" uid="uid://11o3xjxpvxbh" path="res://textures/RockMaterial.tres" id="7_a5s8o"]
-[ext_resource type="Script" uid="uid://bc0te82slhin3" path="res://scripts/test_widget.gd" id="8_045es"]
+[ext_resource type="Script" path="res://scripts/test_widget.gd" id="8_045es"]
 [ext_resource type="Texture2D" uid="uid://d2dalhv3s25k3" path="res://textures/waterwornstone1_Roughness.png" id="8_omn1t"]
 [ext_resource type="PackedScene" uid="uid://bnhexmhyiykuk" path="res://components/Yellow Fish.tscn" id="9_bekh1"]
 [ext_resource type="PackedScene" uid="uid://cnx57fa32032r" path="res://components/Red Fish.tscn" id="9_omn1t"]
 [ext_resource type="PackedScene" uid="uid://cctgl6hsfvgr7" path="res://components/Air Pocket.tscn" id="9_yydhl"]
-[ext_resource type="PackedScene" path="res://components/Puffer Fish.tscn" id="10_8bcou"]
+[ext_resource type="PackedScene" uid="uid://cnihg8oxuibvv" path="res://components/Puffer Fish.tscn" id="10_8bcou"]
 [ext_resource type="Shader" uid="uid://bj635dippc5io" path="res://shaders/Vignette.gdshader" id="10_lf3p4"]
 [ext_resource type="Theme" uid="uid://c7yputbhw5ipm" path="res://UI/ui_theme.tres" id="11_f7u7y"]
 [ext_resource type="Script" uid="uid://bov3m0kt1gqjo" path="res://scripts/VignetteController.gd" id="11_yydhl"]
@@ -205,7 +205,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.446246, 0, 0)
 [node name="PufferFish Target 2" type="Node3D" parent="World/Enemies2/PufferFish"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3484945, 0, 0)
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("game_over_container", "game_over_reason_label", "win_container")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("game_over_container", "game_over_reason_label", "win_container", "game_over_button", "win_button")]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 3
@@ -220,6 +220,8 @@ game_over_container = NodePath("PanelContainer-GameOver")
 game_over_reason_label = NodePath("PanelContainer-GameOver/MarginContainer/VBoxContainer/Label-reason")
 win_container = NodePath("PanelContainer-Win")
 next_scene_path = "res://levels/level2.tscn"
+game_over_button = NodePath("PanelContainer-GameOver/MarginContainer/VBoxContainer/Button-tryAgain")
+win_button = NodePath("PanelContainer-Win/MarginContainer/VBoxContainer/Button-nextLevel")
 
 [node name="Polygon2D" type="Polygon2D" parent="UI" node_paths=PackedStringArray("player")]
 color = Color(1, 0, 0, 1)
