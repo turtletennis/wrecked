@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cctgl6hsfvgr7" path="res://components/Air Pocket.tscn" id="7_hfi3b"]
 [ext_resource type="PackedScene" uid="uid://cnx57fa32032r" path="res://components/Red Fish.tscn" id="8_75exu"]
 [ext_resource type="PackedScene" uid="uid://bnhexmhyiykuk" path="res://components/Yellow Fish.tscn" id="9_sr7fn"]
-[ext_resource type="PackedScene" path="res://components/Puffer Fish.tscn" id="10_giimr"]
+[ext_resource type="PackedScene" uid="uid://cnihg8oxuibvv" path="res://components/Puffer Fish.tscn" id="10_giimr"]
 [ext_resource type="Theme" uid="uid://c7yputbhw5ipm" path="res://UI/ui_theme.tres" id="11_vuw6k"]
 [ext_resource type="Script" uid="uid://cpc50o63woc6e" path="res://scripts/ui_controller.gd" id="12_erhed"]
-[ext_resource type="Script" uid="uid://bc0te82slhin3" path="res://scripts/test_widget.gd" id="13_7a6c5"]
+[ext_resource type="Script" path="res://scripts/test_widget.gd" id="13_7a6c5"]
 [ext_resource type="Shader" uid="uid://bj635dippc5io" path="res://shaders/Vignette.gdshader" id="14_vrpbn"]
 [ext_resource type="Script" uid="uid://bov3m0kt1gqjo" path="res://scripts/VignetteController.gd" id="15_qisw3"]
 
@@ -344,6 +344,7 @@ script = ExtResource("12_erhed")
 game_over_container = NodePath("PanelContainer-GameOver")
 game_over_reason_label = NodePath("PanelContainer-GameOver/MarginContainer/VBoxContainer/Label-reason")
 win_container = NodePath("../PanelContainer-Win")
+next_scene_path = "res://levels/level1.tscn"
 
 [node name="Polygon2D" type="Polygon2D" parent="UI" node_paths=PackedStringArray("player")]
 color = Color(1, 0, 0, 1)
@@ -436,10 +437,11 @@ theme_override_constants/outline_size = 1
 text = "You reached the wreck
  and found the treasure"
 
-[node name="Button-tryAgain" type="Button" parent="PanelContainer-Win/MarginContainer/VBoxContainer"]
+[node name="Button-nextLevel" type="Button" parent="PanelContainer-Win/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Try again"
+text = "Restart Game"
 
 [connection signal="ship_reached_by_player" from="World/Shipwreck" to="." method="_on_shipwreck_ship_reached_by_player"]
 [connection signal="pressed" from="UI/PanelContainer-GameOver/MarginContainer/VBoxContainer/Button-tryAgain" to="UI" method="try_again_pressed"]
+[connection signal="pressed" from="PanelContainer-Win/MarginContainer/VBoxContainer/Button-nextLevel" to="UI" method="next_level_button_pressed"]

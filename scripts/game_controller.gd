@@ -20,6 +20,9 @@ func game_over(reason:String) -> void:
 func win() -> void:
 	get_tree().paused = true
 	ui.win()
+func next_level(levelPath:String)-> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(levelPath)
 
 func try_again() -> void:
 	get_tree().paused = false
