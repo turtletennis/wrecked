@@ -89,6 +89,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Shipwreck" parent="World" instance=ExtResource("3_8hd6v")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -46.96331, 0)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="World"]
@@ -200,7 +201,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.446246, 0, 0)
 [node name="PufferFish Target 2" type="Node3D" parent="World/Enemies2/PufferFish"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3484945, 0, 0)
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("game_over_container", "game_over_reason_label")]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("game_over_container", "game_over_reason_label", "win_container")]
 unique_name_in_owner = true
 process_mode = 3
 layout_mode = 3
@@ -213,6 +214,7 @@ theme = ExtResource("11_f7u7y")
 script = ExtResource("12_jq2cn")
 game_over_container = NodePath("PanelContainer-GameOver")
 game_over_reason_label = NodePath("PanelContainer-GameOver/MarginContainer/VBoxContainer/Label-reason")
+win_container = NodePath("PanelContainer-Win")
 
 [node name="Polygon2D" type="Polygon2D" parent="UI" node_paths=PackedStringArray("player")]
 color = Color(1, 0, 0, 1)
@@ -272,5 +274,43 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Try again"
 
-[connection signal="ship_reached_by_player" from="World/Shipwreck" to="." method="_on_shipwreck_ship_reached_by_player"]
+[node name="PanelContainer-Win" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer-Win"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer-Win/MarginContainer"]
+layout_mode = 2
+
+[node name="Label-heading" type="Label" parent="UI/PanelContainer-Win/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 72
+text = "YOU WIN!"
+horizontal_alignment = 1
+
+[node name="Label-reason" type="Label" parent="UI/PanelContainer-Win/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 1
+text = "You reached the wreck
+ and found the treasure"
+
+[node name="Button-tryAgain" type="Button" parent="UI/PanelContainer-Win/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Try again"
+
 [connection signal="pressed" from="UI/PanelContainer-GameOver/MarginContainer/VBoxContainer/Button-tryAgain" to="UI" method="try_again_pressed"]
+[connection signal="pressed" from="UI/PanelContainer-Win/MarginContainer/VBoxContainer/Button-tryAgain" to="UI" method="try_again_pressed"]

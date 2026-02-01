@@ -1,7 +1,20 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c7yputbhw5ipm"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://c7yputbhw5ipm"]
 
+[ext_resource type="Texture2D" uid="uid://c6i7ec70u5oh3" path="res://UI/PNG/Blue/Double/button_square_flat.png" id="1_6tkuj"]
 [ext_resource type="Texture2D" uid="uid://cvgtfqo1om1m5" path="res://UI/PNG/Extra/Default/input_outline_square.png" id="1_it55r"]
 [ext_resource type="FontFile" uid="uid://d05xpbyg636ii" path="res://UI/Font/Kenney Future Narrow.ttf" id="2_p8160"]
+[ext_resource type="StyleBox" uid="uid://b68y1fyhk254e" path="res://UI/button_style.tres" id="2_qbadw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s437d"]
+texture = ExtResource("1_6tkuj")
+expand_margin_left = 22.0
+expand_margin_right = 8.0
+modulate_color = Color(0.40705615, 0.40705618, 0.40705615, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qbadw"]
+texture = ExtResource("1_6tkuj")
+expand_margin_left = 22.0
+expand_margin_right = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p8160"]
 texture = ExtResource("1_it55r")
@@ -14,6 +27,11 @@ modulate_color = Color(0.42000002, 0.5166666, 1, 1)
 [resource]
 default_font = ExtResource("2_p8160")
 default_font_size = 32
+Button/styles/disabled = SubResource("StyleBoxTexture_s437d")
+Button/styles/focus = ExtResource("2_qbadw")
+Button/styles/hover = SubResource("StyleBoxTexture_qbadw")
+Button/styles/hover_pressed = ExtResource("2_qbadw")
+Button/styles/normal = ExtResource("2_qbadw")
 MarginContainer/constants/margin_bottom = 8
 MarginContainer/constants/margin_left = 8
 MarginContainer/constants/margin_right = 8

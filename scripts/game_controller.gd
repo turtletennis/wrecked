@@ -2,8 +2,7 @@ extends Node3D
 
 @export var player_in_air:bool = false
 var ui:UIController
-
-
+	
 func _on_shipwreck_ship_reached_by_player() -> void:
 	print_debug("Level complete!")
 
@@ -17,6 +16,10 @@ func game_over(reason:String) -> void:
 	print_debug("Game over!")
 	get_tree().paused = true
 	ui.game_over(reason)
+
+func win() -> void:
+	get_tree().paused = true
+	ui.win()
 
 func try_again() -> void:
 	get_tree().paused = false
