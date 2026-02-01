@@ -55,11 +55,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	if position.y > 0 and !player_surfaced:
+		print_debug("Surfaced!")
 		GameController.player_in_air = true
 		player_surfaced = true
 		while yellowFishAttached.size() > 0:
 			detach_yellow_fish()
 	elif position.y < 0 and player_surfaced:
+		print_debug("Going down!")
 		GameController.player_in_air = false
 		player_surfaced = false
 
@@ -81,5 +83,6 @@ func push(amount:Vector3):
 	push_total_force += amount
 
 func detach_yellow_fish():
+	yellowFishAttached[-1].shake_off()
 	yellowFishAttached.pop_back()
 	yellowFishShake = 0

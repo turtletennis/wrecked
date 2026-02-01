@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		global_position = player.global_position + attachOffset
 	elif state == State.COOLDOWN:
 		var target = targetNodes[nextTarget].position
-		go_towards_target(target, wanderingSpeed, delta)
+		go_towards_target(target, playerChaseSpeed, delta)
 		cooldown += 1
 		if cooldown >= cooldown_Value_seconds * 60:
 			change_state(State.WANDERING)
