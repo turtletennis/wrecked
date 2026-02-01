@@ -45,6 +45,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	state_machine_tick(delta)
+
+func state_machine_tick(delta: float) -> void:
 	if state == State.WANDERING:
 		if (position.distance_squared_to(targetNodes[nextTarget].position) <= 0.01): # 0.1^2
 			nextTarget += 1
@@ -62,7 +65,7 @@ func _physics_process(delta: float) -> void:
 		push_error("Enemy state unimplemented! State: ", State.keys()[state])
 
 func change_state(newState: State):
-	print_debug("Changing Enemy state from ", State.keys()[state], " to ", State.keys()[newState])
+	print_debug("Changing ", name, " state from ", State.keys()[state], " to ", State.keys()[newState])
 	state = newState
 
 func go_towards_target(target: Vector3, speed: float, delta: float) -> void:
