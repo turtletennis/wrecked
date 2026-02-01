@@ -1,29 +1,38 @@
-[gd_scene format=3 uid="uid://csupmqbhgw8ef"]
+[gd_scene load_steps=6 format=3 uid="uid://csupmqbhgw8ef"]
 
 [ext_resource type="Script" uid="uid://vx3utqkjb74g" path="res://scripts/shipwreck.gd" id="1_fgvkc"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_045es"]
-size = Vector3(5, 2, 3)
+[ext_resource type="PackedScene" uid="uid://elsfm72uuiyb" path="res://models/boat.glb" id="2_xf35c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_omn1t"]
-size = Vector3(5, 2, 3)
+size = Vector3(6.928, 2, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fgvkc"]
-size = Vector3(6, 2.4297485, 3)
+size = Vector3(7.798, 7, 3)
 
-[node name="Shipwreck" type="StaticBody3D" unique_id=1503740162]
+[sub_resource type="BoxShape3D" id="BoxShape3D_xf35c"]
+size = Vector3(0.578, 4, 3.641)
+
+[node name="Shipwreck" type="StaticBody3D"]
 script = ExtResource("1_fgvkc")
 
-[node name="ship" type="MeshInstance3D" parent="." unique_id=1196286085]
-mesh = SubResource("BoxMesh_045es")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=760667356]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.314, 0, 0)
 shape = SubResource("BoxShape3D_omn1t")
 
-[node name="PlayerInteractArea" type="Area3D" parent="." unique_id=170478156]
+[node name="PlayerInteractArea" type="Area3D" parent="."]
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="PlayerInteractArea" unique_id=1075135495]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20429838, 0)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="PlayerInteractArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17683506, 1.8761885, 0)
 shape = SubResource("BoxShape3D_fgvkc")
+
+[node name="boat2" parent="." instance=ExtResource("2_xf35c")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.2004476, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8862181, 2.582953, 0.10240775)
+shape = SubResource("BoxShape3D_xf35c")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8748436, 2.2162652, 0)
 
 [connection signal="body_entered" from="PlayerInteractArea" to="." method="_on_player_interact_area_body_entered"]
