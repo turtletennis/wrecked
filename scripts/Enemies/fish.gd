@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 class_name Fish
 
-enum State {WANDERING, CHASING, ATTACKING}
+enum State {WANDERING, CHASING, ATTACKING, COOLDOWN}
 
 @export var state: State = State.WANDERING
 

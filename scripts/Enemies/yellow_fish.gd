@@ -4,6 +4,9 @@ class_name YellowFish
 
 @export var attachOffset: Vector3
 
+@export var cooldown_Value_seconds: float = 5.0
+var cooldown = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if targetNodes.size() < 1:
@@ -27,10 +30,20 @@ func _physics_process(delta: float) -> void:
 		if !check_for_player_nearby(playerIgnoreRadius):
 			change_state(State.WANDERING)
 	elif state == State.ATTACKING:
-		player.yellowFishAttached += 1
 		global_position = player.global_position + attachOffset
+	elif state == State.COOLDOWN:
+		var target = targetNodes[nextTarget].position
+		go_towards_target(target, wanderingSpeed, delta)
+		cooldown += 1
+		if cooldown >= cooldown_Value_seconds * 60:
+			change_state(State.WANDERING)
+			cooldown = 0
 	else:
 		push_error("Enemy state unimplemented! State: ", State.keys()[state])
 
 func on_player_hit():
 	change_state(State.ATTACKING)
+	player.yellowFishAttached.append(self)
+
+func shake_off():
+	change_state(State.COOLDOWN)
