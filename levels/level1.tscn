@@ -1,18 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://b0l8c40crtxe3"]
+[gd_scene load_steps=25 format=3 uid="uid://b0l8c40crtxe3"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_61w3m"]
 [ext_resource type="PackedScene" uid="uid://dlarn7cbecn5r" path="res://components/player.tscn" id="2_pdpul"]
 [ext_resource type="PackedScene" uid="uid://csupmqbhgw8ef" path="res://components/shipwreck.tscn" id="3_8hd6v"]
 [ext_resource type="Texture2D" uid="uid://cc5q2014hpmbw" path="res://textures/waterwornstone1_Base_Color.png" id="6_pdpul"]
 [ext_resource type="Texture2D" uid="uid://ctaf7tdhldxog" path="res://textures/waterwornstone1_Normal.png" id="7_045es"]
-[ext_resource type="Script" uid="uid://bc0te82slhin3" path="res://scripts/test_widget.gd" id="8_045es"]
+[ext_resource type="Script" path="res://scripts/test_widget.gd" id="8_045es"]
 [ext_resource type="Texture2D" uid="uid://d2dalhv3s25k3" path="res://textures/waterwornstone1_Roughness.png" id="8_omn1t"]
 [ext_resource type="PackedScene" uid="uid://bnhexmhyiykuk" path="res://components/Yellow Fish.tscn" id="9_bekh1"]
 [ext_resource type="PackedScene" uid="uid://cnx57fa32032r" path="res://components/Red Fish.tscn" id="9_omn1t"]
 [ext_resource type="PackedScene" uid="uid://cctgl6hsfvgr7" path="res://components/Air Pocket.tscn" id="9_yydhl"]
-[ext_resource type="PackedScene" path="res://components/Puffer Fish.tscn" id="10_8bcou"]
+[ext_resource type="PackedScene" uid="uid://cnihg8oxuibvv" path="res://components/Puffer Fish.tscn" id="10_8bcou"]
 [ext_resource type="Shader" uid="uid://bj635dippc5io" path="res://shaders/Vignette.gdshader" id="10_lf3p4"]
+[ext_resource type="Theme" uid="uid://c7yputbhw5ipm" path="res://UI/ui_theme.tres" id="11_f7u7y"]
 [ext_resource type="Script" uid="uid://bov3m0kt1gqjo" path="res://scripts/VignetteController.gd" id="11_yydhl"]
+[ext_resource type="Script" uid="uid://cpc50o63woc6e" path="res://scripts/ui_controller.gd" id="12_jq2cn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8hd6v"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -81,6 +83,7 @@ script = ExtResource("1_61w3m")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="World" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="Player" parent="World" instance=ExtResource("2_pdpul")]
 unique_name_in_owner = true
@@ -197,13 +200,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.446246, 0, 0)
 [node name="PufferFish Target 2" type="Node3D" parent="World/Enemies2/PufferFish"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3484945, 0, 0)
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("game_over_container", "game_over_reason_label")]
+unique_name_in_owner = true
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("11_f7u7y")
+script = ExtResource("12_jq2cn")
+game_over_container = NodePath("PanelContainer-GameOver")
+game_over_reason_label = NodePath("PanelContainer-GameOver/MarginContainer/VBoxContainer/Label-reason")
 
 [node name="Polygon2D" type="Polygon2D" parent="UI" node_paths=PackedStringArray("player")]
 color = Color(1, 0, 0, 1)
@@ -217,9 +226,51 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = -2.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_yydhl")
 player = NodePath("../../World/Player")
 
+[node name="PanelContainer-GameOver" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer-GameOver"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer-GameOver/MarginContainer"]
+layout_mode = 2
+
+[node name="Label-heading" type="Label" parent="UI/PanelContainer-GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 72
+text = "GAME OVER!"
+horizontal_alignment = 1
+
+[node name="Label-reason" type="Label" parent="UI/PanelContainer-GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 1
+text = "Game over reason."
+
+[node name="Button-tryAgain" type="Button" parent="UI/PanelContainer-GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Try again"
+
 [connection signal="ship_reached_by_player" from="World/Shipwreck" to="." method="_on_shipwreck_ship_reached_by_player"]
+[connection signal="pressed" from="UI/PanelContainer-GameOver/MarginContainer/VBoxContainer/Button-tryAgain" to="UI" method="try_again_pressed"]

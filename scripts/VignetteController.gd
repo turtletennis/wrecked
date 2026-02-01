@@ -1,7 +1,5 @@
 extends ColorRect
 
-class_name UIController
-
 @onready var mat := material as ShaderMaterial
 
 @export var player: Player

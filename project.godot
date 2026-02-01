@@ -30,6 +30,10 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
+[gui]
+
+theme/custom_font="uid://bdc2qutve1cei"
+
 [input]
 
 up={
