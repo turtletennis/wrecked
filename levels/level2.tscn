@@ -1,0 +1,406 @@
+[gd_scene load_steps=25 format=3 uid="uid://ddujactp1nsx8"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_qegch"]
+[ext_resource type="PackedScene" uid="uid://dlarn7cbecn5r" path="res://components/player.tscn" id="2_jai45"]
+[ext_resource type="PackedScene" uid="uid://csupmqbhgw8ef" path="res://components/shipwreck.tscn" id="3_jj0ry"]
+[ext_resource type="Texture2D" uid="uid://cc5q2014hpmbw" path="res://textures/waterwornstone1_Base_Color.png" id="4_w8ofq"]
+[ext_resource type="Texture2D" uid="uid://ctaf7tdhldxog" path="res://textures/waterwornstone1_Normal.png" id="5_sg85d"]
+[ext_resource type="Texture2D" uid="uid://d2dalhv3s25k3" path="res://textures/waterwornstone1_Roughness.png" id="6_s0tuf"]
+[ext_resource type="PackedScene" uid="uid://cctgl6hsfvgr7" path="res://components/Air Pocket.tscn" id="7_hfi3b"]
+[ext_resource type="PackedScene" uid="uid://cnx57fa32032r" path="res://components/Red Fish.tscn" id="8_75exu"]
+[ext_resource type="PackedScene" uid="uid://bnhexmhyiykuk" path="res://components/Yellow Fish.tscn" id="9_sr7fn"]
+[ext_resource type="PackedScene" path="res://components/Puffer Fish.tscn" id="10_giimr"]
+[ext_resource type="Theme" uid="uid://c7yputbhw5ipm" path="res://UI/ui_theme.tres" id="11_vuw6k"]
+[ext_resource type="Script" uid="uid://cpc50o63woc6e" path="res://scripts/ui_controller.gd" id="12_erhed"]
+[ext_resource type="Script" uid="uid://bc0te82slhin3" path="res://scripts/test_widget.gd" id="13_7a6c5"]
+[ext_resource type="Shader" uid="uid://bj635dippc5io" path="res://shaders/Vignette.gdshader" id="14_vrpbn"]
+[ext_resource type="Script" uid="uid://bov3m0kt1gqjo" path="res://scripts/VignetteController.gd" id="15_qisw3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8hd6v"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_045es"]
+sky_material = SubResource("ProceduralSkyMaterial_8hd6v")
+
+[sub_resource type="Environment" id="Environment_omn1t"]
+background_mode = 1
+sky = SubResource("Sky_045es")
+ambient_light_color = Color(0, 0, 0.38039216, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61w3m"]
+albedo_texture = ExtResource("4_w8ofq")
+roughness_texture = ExtResource("6_s0tuf")
+normal_enabled = true
+normal_texture = ExtResource("5_sg85d")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_sjb42"]
+lightmap_size_hint = Vector2i(109, 306)
+add_uv2 = true
+size = Vector3(20, 20, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pdtm5"]
+lightmap_size_hint = Vector2i(259, 456)
+add_uv2 = true
+size = Vector3(50, 20, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pdpul"]
+lightmap_size_hint = Vector2i(1509, 1706)
+add_uv2 = true
+size = Vector3(300, 20, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_045es"]
+data = PackedVector3Array(-20, -50, 0.5, -10, -48.63122, 0.5, -10, -50, 0.5, -20, -50, -0.5, -10, -50, -0.5, -20, 0, -0.5, -10, -50, -0.5, -10, -48.63122, -0.5, -20, 0, -0.5, -20, 0, -0.5, -10, -48.63122, -0.5, -10, 0, -0.5, -20, -50, -0.5, -20, 0, -0.5, -20, 0, 0.5, -20, 0, -0.5, -10, 0, -0.5, -20, 0, 0.5, -10, 0, -0.5, -10, -48.63122, -0.5, -10, 0, 0.5, -20, -50, -0.5, -20, 0, 0.5, -20, -50, 0.5, -20, -50, 0.5, -10, 0, 0.5, -10, -48.63122, 0.5, -10, 0, -0.5, -10, 0, 0.5, -20, 0, 0.5, -20, -50, 0.5, -20, 0, 0.5, -10, 0, 0.5, -10, 0, 0.5, -10, -48.63122, -0.5, -10, -48.63122, 0.5, 20, -50, -0.5, 10, -48.63122, -0.5, 10, -50, -0.5, 10, -48.63122, -0.5, 20, -50, -0.5, 10, 0, -0.5, 10, 0, -0.5, 10, -48.63122, 0.5, 10, -48.63122, -0.5, 20, -50, -0.5, 20, -50, 0.5, 20, 0, -0.5, 20, -50, -0.5, 20, 0, -0.5, 10, 0, -0.5, 10, 0, -0.5, 20, 0, -0.5, 10, 0, 0.5, 10, -50, 0.5, 10, -48.63122, 0.5, 20, 0, 0.5, 10, -50, 0.5, 20, 0, 0.5, 20, -50, 0.5, 10, 0, -0.5, 10, 0, 0.5, 10, -48.63122, 0.5, 20, -50, 0.5, 20, 0, 0.5, 20, 0, -0.5, 20, 0, -0.5, 20, 0, 0.5, 10, 0, 0.5, 20, 0, 0.5, 10, -48.63122, 0.5, 10, 0, 0.5, -20, -68.631226, -0.5, -20, -50, -0.5, -20, -50, 0.5, -20, -68.631226, -0.5, 20, -68.631226, -0.5, -20, -50, -0.5, 20, -68.631226, -0.5, -10, -50, -0.5, -20, -50, -0.5, -10, -50, -0.5, 10, -48.63122, -0.5, -10, -48.63122, -0.5, -20, -68.631226, -0.5, -20, -50, 0.5, -20, -68.631226, 0.5, -20, -68.631226, 0.5, -20, -50, 0.5, -10, -50, 0.5, -20, -68.631226, -0.5, -20, -68.631226, 0.5, 20, -68.631226, 0.5, -20, -68.631226, 0.5, -10, -50, 0.5, 10, -50, 0.5, -10, -48.63122, -0.5, 10, -48.63122, 0.5, -10, -48.63122, 0.5, -10, -50, 0.5, -10, -48.63122, 0.5, 10, -50, 0.5, 20, -68.631226, -0.5, 10, -50, -0.5, -10, -50, -0.5, -20, -68.631226, -0.5, 20, -68.631226, 0.5, 20, -68.631226, -0.5, -10, -50, -0.5, 10, -50, -0.5, 10, -48.63122, -0.5, 10, -48.63122, 0.5, -10, -48.63122, -0.5, 10, -48.63122, -0.5, 20, -68.631226, -0.5, 20, -50, -0.5, 10, -50, -0.5, 20, -68.631226, -0.5, 20, -68.631226, 0.5, 20, -50, -0.5, -20, -68.631226, 0.5, 10, -50, 0.5, 20, -50, 0.5, -20, -68.631226, 0.5, 20, -50, 0.5, 20, -68.631226, 0.5, 10, -50, 0.5, -10, -48.63122, 0.5, 10, -48.63122, 0.5, 20, -68.631226, 0.5, 20, -50, 0.5, 20, -50, -0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omn1t"]
+shader = ExtResource("14_vrpbn")
+shader_parameter/visible_radius = 0.0
+shader_parameter/softness = 0.2
+shader_parameter/vignette_color = Color(0.10980392, 0.32156864, 0.6, 1)
+
+[node name="Level" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.24999999, 0.2952254, -0.039301187, 0.954619, -0.40353692, 0.90053064, 0.16187218, 0, 0, 33.574524)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_omn1t")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+top_level = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_qegch")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="World" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="World" instance=ExtResource("2_jai45")]
+unique_name_in_owner = true
+
+[node name="Shipwreck" parent="World" instance=ExtResource("3_jj0ry")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.17818, -70.80229, 0)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="World"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="World/StaticBody3D2"]
+material_override = SubResource("StandardMaterial3D_61w3m")
+
+[node name="CSGMesh3D-CubeWall" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -7.4176598, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall18" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.9505, -44.67699, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall2" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -26.574196, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall3" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3651638, -38.289814, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall4" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.354242, -5.3954887, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall5" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.758163, -5.3954887, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall6" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.59361, -24.84968, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall7" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.59361, -43.668556, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall8" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.59361, -63.302696, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall9" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.189415, -51.662865, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall10" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.66492, -63.46017, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall11" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.66492, -44.18982, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall12" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.68663, -25.029537, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall13" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.226074, -7.890873, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall14" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.78497, -44.17564, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall15" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.88232, -64.12184, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall16" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.58231, -13.652641, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D-CubeWall17" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.4842, -13.652641, 0)
+mesh = SubResource("BoxMesh_sjb42")
+
+[node name="CSGMesh3D2-topwall" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.490513, -7.2836037, 0)
+mesh = SubResource("BoxMesh_pdtm5")
+
+[node name="CSGMesh3D2-rightwall2" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.158325, -44.578575, 0)
+mesh = SubResource("BoxMesh_pdtm5")
+
+[node name="CSGMesh3D3-floor" type="CSGMesh3D" parent="World/StaticBody3D2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -82.785225, 0)
+mesh = SubResource("BoxMesh_pdpul")
+
+[node name="CSGBakedCollisionShape3D2" type="CollisionShape3D" parent="World/StaticBody3D2"]
+shape = SubResource("ConcavePolygonShape3D_045es")
+
+[node name="AirPocket" parent="World" instance=ExtResource("7_hfi3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4958, -49.895298, 0)
+
+[node name="AirPocket2" parent="World" instance=ExtResource("7_hfi3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.025045, -37.87699, 0)
+
+[node name="AirPocket3" parent="World" instance=ExtResource("7_hfi3b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.40843, -51.89223, 0)
+
+[node name="Enemies2" type="Node" parent="World"]
+
+[node name="Redfish1" type="Node" parent="World/Enemies2"]
+
+[node name="RedFish1 Enemy" parent="World/Enemies2/Redfish1" node_paths=PackedStringArray("targetNodes") instance=ExtResource("8_75exu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.207443, -34.292145, 0)
+targetNodes = [NodePath("../Redfish1 Target 1"), NodePath("../RedFish1 Target 2")]
+
+[node name="Redfish1 Target 1" type="Node3D" parent="World/Enemies2/Redfish1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.364826, -26.81231, 0)
+
+[node name="RedFish1 Target 2" type="Node3D" parent="World/Enemies2/Redfish1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.627232, -33.991123, 0)
+
+[node name="Redfish2" type="Node" parent="World/Enemies2"]
+
+[node name="RedFish2 Enemy" parent="World/Enemies2/Redfish2" node_paths=PackedStringArray("targetNodes") instance=ExtResource("8_75exu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.118935, -67.72711, 0)
+targetNodes = [NodePath("../Redfish2 Target 1"), NodePath("../RedFish2 Target 2")]
+
+[node name="Redfish2 Target 1" type="Node3D" parent="World/Enemies2/Redfish2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.80023, -67.41998, 0)
+
+[node name="RedFish2 Target 2" type="Node3D" parent="World/Enemies2/Redfish2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.775944, -65.68435, 0)
+
+[node name="Redfish3" type="Node" parent="World/Enemies2"]
+
+[node name="RedFish3 Enemy" parent="World/Enemies2/Redfish3" node_paths=PackedStringArray("targetNodes") instance=ExtResource("8_75exu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.374905, -39.4107, 0)
+targetNodes = [NodePath("../Redfish3 Target 1"), NodePath("../RedFish3 Target 2")]
+
+[node name="Redfish3 Target 1" type="Node3D" parent="World/Enemies2/Redfish3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.347828, -39.13094, 0)
+
+[node name="RedFish3 Target 2" type="Node3D" parent="World/Enemies2/Redfish3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.387165, -39.301865, 0)
+
+[node name="Redfish4" type="Node" parent="World/Enemies2"]
+
+[node name="RedFish4 Enemy" parent="World/Enemies2/Redfish4" node_paths=PackedStringArray("targetNodes") instance=ExtResource("8_75exu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.64484, -20.672232, 0)
+targetNodes = [NodePath("../Redfish4 Target 1"), NodePath("../RedFish4 Target 2"), NodePath("../RedFish4 Target 3"), NodePath("../RedFish4 Target 4")]
+
+[node name="Redfish4 Target 1" type="Node3D" parent="World/Enemies2/Redfish4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0801, -20.561716, 0)
+
+[node name="RedFish4 Target 2" type="Node3D" parent="World/Enemies2/Redfish4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.67029, -31.778746, 0)
+
+[node name="RedFish4 Target 3" type="Node3D" parent="World/Enemies2/Redfish4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.171673, -21.36741, 0)
+
+[node name="RedFish4 Target 4" type="Node3D" parent="World/Enemies2/Redfish4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.23563, -30.817503, 0)
+
+[node name="Redfish5" type="Node" parent="World/Enemies2"]
+
+[node name="RedFish5 Enemy" parent="World/Enemies2/Redfish5" node_paths=PackedStringArray("targetNodes") instance=ExtResource("8_75exu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.90408, -26.452763, 0)
+targetNodes = [NodePath("../Redfish5 Target 1"), NodePath("../RedFish5 Target 2"), NodePath("../RedFish5 Target 3"), NodePath("../RedFish5 Target 4")]
+
+[node name="Redfish5 Target 1" type="Node3D" parent="World/Enemies2/Redfish5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.37385, -28.051582, 0)
+
+[node name="RedFish5 Target 2" type="Node3D" parent="World/Enemies2/Redfish5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.7676, -54.509506, 0)
+
+[node name="RedFish5 Target 3" type="Node3D" parent="World/Enemies2/Redfish5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.466965, -61.947998, 0)
+
+[node name="RedFish5 Target 4" type="Node3D" parent="World/Enemies2/Redfish5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.0569, -30.817503, 0)
+
+[node name="YellowFish" type="Node" parent="World/Enemies2"]
+
+[node name="YellowFish" parent="World/Enemies2/YellowFish" node_paths=PackedStringArray("targetNodes") instance=ExtResource("9_sr7fn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.996323, -52.473274, 0)
+targetNodes = [NodePath("../YellowFish1 Target 1"), NodePath("../YellowFish1 Target 2")]
+
+[node name="YellowFish1 Target 1" type="Node3D" parent="World/Enemies2/YellowFish"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.923218, -53.698524, 0)
+
+[node name="YellowFish1 Target 2" type="Node3D" parent="World/Enemies2/YellowFish"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.86688, -67.603905, 0)
+
+[node name="YellowFish2" type="Node" parent="World/Enemies2"]
+
+[node name="YellowFish2" parent="World/Enemies2/YellowFish2" node_paths=PackedStringArray("targetNodes") instance=ExtResource("9_sr7fn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.689964, -21.989117, 0)
+targetNodes = [NodePath("../YellowFish2 Target 1"), NodePath("../YellowFish2 Target 2")]
+
+[node name="YellowFish2 Target 1" type="Node3D" parent="World/Enemies2/YellowFish2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.91086, -30.61477, 0)
+
+[node name="YellowFish2 Target 2" type="Node3D" parent="World/Enemies2/YellowFish2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.22935, -20.875431, 0)
+
+[node name="PufferFish" type="Node3D" parent="World/Enemies2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.68892, -64.138016, 0)
+
+[node name="PufferFish" parent="World/Enemies2/PufferFish" node_paths=PackedStringArray("targetNodes") instance=ExtResource("10_giimr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.266979, 0)
+targetNodes = [NodePath("../PufferFish Target 1"), NodePath("../PufferFish Target 2")]
+
+[node name="PufferFish Target 1" type="Node3D" parent="World/Enemies2/PufferFish"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.650734, 6.139042, 0)
+
+[node name="PufferFish Target 2" type="Node3D" parent="World/Enemies2/PufferFish"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.764893, -4.9623413, 0)
+
+[node name="PufferFish2" type="Node3D" parent="World/Enemies2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.34722, -64.239784, 0)
+
+[node name="PufferFish" parent="World/Enemies2/PufferFish2" node_paths=PackedStringArray("targetNodes") instance=ExtResource("10_giimr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.336502, -4.372345, 0)
+targetNodes = [NodePath("../PufferFish Target 1"), NodePath("../PufferFish Target 2")]
+
+[node name="PufferFish Target 1" type="Node3D" parent="World/Enemies2/PufferFish2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.819023, 6.139042, 0)
+
+[node name="PufferFish Target 2" type="Node3D" parent="World/Enemies2/PufferFish2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6199417, -4.9623413, 0)
+
+[node name="PufferFish3" type="Node3D" parent="World/Enemies2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.28247, -64.239784, 0)
+
+[node name="PufferFish" parent="World/Enemies2/PufferFish3" node_paths=PackedStringArray("targetNodes") instance=ExtResource("10_giimr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.511238, -4.372345, 0)
+targetNodes = [NodePath("../PufferFish Target 1"), NodePath("../PufferFish Target 2")]
+
+[node name="PufferFish Target 1" type="Node3D" parent="World/Enemies2/PufferFish3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2019749, 8.333656, 0)
+
+[node name="PufferFish Target 2" type="Node3D" parent="World/Enemies2/PufferFish3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7576065, -4.9623413, 0)
+
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("game_over_container", "game_over_reason_label")]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_vuw6k")
+script = ExtResource("12_erhed")
+game_over_container = NodePath("PanelContainer-GameOver")
+game_over_reason_label = NodePath("PanelContainer-GameOver/MarginContainer/VBoxContainer/Label-reason")
+
+[node name="Polygon2D" type="Polygon2D" parent="UI" node_paths=PackedStringArray("player")]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(99, 45, 214, 45, 211, 144, 96, 144)
+script = ExtResource("13_7a6c5")
+player = NodePath("../../World/Player")
+
+[node name="Viginette" type="ColorRect" parent="UI" node_paths=PackedStringArray("player")]
+material = SubResource("ShaderMaterial_omn1t")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = -2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_qisw3")
+player = NodePath("../../World/Player")
+min_radius = 0.0
+
+[node name="PanelContainer-GameOver" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer-GameOver"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer-GameOver/MarginContainer"]
+layout_mode = 2
+
+[node name="Label-heading" type="Label" parent="UI/PanelContainer-GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 72
+text = "GAME OVER!"
+horizontal_alignment = 1
+
+[node name="Label-reason" type="Label" parent="UI/PanelContainer-GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 1
+text = "Game over reason."
+
+[node name="Button-tryAgain" type="Button" parent="UI/PanelContainer-GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Try again"
+
+[connection signal="ship_reached_by_player" from="World/Shipwreck" to="." method="_on_shipwreck_ship_reached_by_player"]
+[connection signal="pressed" from="UI/PanelContainer-GameOver/MarginContainer/VBoxContainer/Button-tryAgain" to="UI" method="try_again_pressed"]
