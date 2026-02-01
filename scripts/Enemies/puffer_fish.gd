@@ -1,4 +1,4 @@
-extends RedFish
+extends Fish
 @export var instakill:bool = true
 
 func handle_collision(collision:KinematicCollision3D):
@@ -7,3 +7,9 @@ func handle_collision(collision:KinematicCollision3D):
 		if (collider is Player):
 			var player = collider as Player
 			player.push(velocity * pushing_power)
+
+func on_player_hit():
+	if(instakill):
+		GameController.game_over.call_deferred()
+	else:
+		super.on_player_hit()

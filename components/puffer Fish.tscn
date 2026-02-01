@@ -1,22 +1,23 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnihg8oxuibvv"]
 
-[ext_resource type="PackedScene" uid="uid://cnx57fa32032r" path="res://components/Red Fish.tscn" id="1_ybo1l"]
-[ext_resource type="PackedScene" uid="uid://ddmvc3ok1v5ae" path="res://models/puffer_fish.glb" id="2_5fulc"]
-[ext_resource type="Script" uid="uid://cdjms2jejokis" path="res://components/puffer_fish.gd" id="2_wfqgj"]
+[ext_resource type="PackedScene" uid="uid://cnx57fa32032r" path="res://components/Red Fish.tscn" id="1_cbb3i"]
+[ext_resource type="Script" uid="uid://cdjms2jejokis" path="res://scripts/Enemies/puffer_fish.gd" id="2_rvofd"]
+[ext_resource type="PackedScene" uid="uid://ddmvc3ok1v5ae" path="res://models/puffer_fish.glb" id="3_2od8h"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wfqgj"]
 radius = 0.9
 
-[node name="PufferFish" instance=ExtResource("1_ybo1l")]
-script = ExtResource("2_wfqgj")
+[node name="PufferFish" instance=ExtResource("1_cbb3i")]
+script = ExtResource("2_rvofd")
+instakill = true
 acceleration = 4.0
 turn_rate = 2.0
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("SphereShape3D_wfqgj")
 
-[node name="MeshInstance3D" parent="." index="1"]
-visible = false
-
-[node name="puffer_fish" parent="." index="2" instance=ExtResource("2_5fulc")]
+[node name="puffer_fish" parent="." index="2" instance=ExtResource("3_2od8h")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="ramming_fish" parent="." index="3"]
+visible = false

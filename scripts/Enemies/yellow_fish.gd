@@ -1,6 +1,6 @@
 extends Fish
 
-class_name RedFish
+class_name YellowFish
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +12,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if state == State.WANDERING:
-		#print_debug(targetNodes.size(),nextTarget,name)
 		if (position.distance_squared_to(targetNodes[nextTarget].position) <= 0.01): # 0.1^2
 			nextTarget += 1
 			if nextTarget > (targetNodes.size() - 1):
@@ -25,7 +24,10 @@ func _physics_process(delta: float) -> void:
 		go_towards_target(player.position, playerChaseSpeed, delta)
 		if !check_for_player_nearby(playerIgnoreRadius):
 			change_state(State.WANDERING)
+	elif state == State.ATTACKING:
+		player.velocity.y += 0.1
 	else:
 		push_error("Enemy state unimplemented! State: ", State.keys()[state])
 
-	
+func on_player_hit():
+	change_state(State.ATTACKING)
