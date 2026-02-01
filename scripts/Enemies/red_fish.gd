@@ -112,11 +112,7 @@ func go_towards_target(target: Vector3, speed: float, delta: float) -> void:
 
 	# --- Move ---
 	var collision = move_and_collide(velocity * delta)
-	if (collision):
-		var collider = collision.get_collider()
-		if (collider is Player):
-			var player = collider as Player
-			player.push(velocity * pushing_power)
+	handle_collision(collision)
 
 	# --- Face forward ---
 	look_at(global_position + forward_dir, Vector3.UP)
@@ -124,3 +120,10 @@ func go_towards_target(target: Vector3, speed: float, delta: float) -> void:
 func check_for_player_nearby(detectionRadius):
 	if GameController.player_in_air: return false
 	return player.position.distance_to(position) <= detectionRadius
+
+func handle_collision(collision:KinematicCollision3D):
+	if (collision):
+		var collider = collision.get_collider()
+		if (collider is Player):
+			var player = collider as Player
+			player.push(velocity * pushing_power)

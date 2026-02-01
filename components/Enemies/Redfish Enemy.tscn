@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvbs0uxm3e8lb"]
 
-[ext_resource type="PackedScene" uid="uid://bfwg06qloc534" path="res://components/Red Fish.tscn" id="1_kkhq5"]
+[ext_resource type="PackedScene" uid="uid://cnx57fa32032r" path="res://components/Red Fish.tscn" id="1_kkhq5"]
 
 [node name="RedfishEnemy" type="Node3D"]
 

@@ -28,3 +28,4 @@ mono_crash.*.json
 # Built Visual Studio Code Extensions
 *.vsix
 *.painter_lock
+*_autosave_*.spp

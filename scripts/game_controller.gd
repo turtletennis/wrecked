@@ -10,3 +10,6 @@ func on_airpocket_enter(body: Node3D):
 
 func on_air_pocket_exit(body: Node3D):
 	player_in_air = false
+
+func game_over() -> void:
+	print_debug("Game over!")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnx57fa32032r"]
+[gd_scene load_steps=6 format=3 uid="uid://cnx57fa32032r"]
 
 [ext_resource type="Script" uid="uid://be0vqfna6duxo" path="res://scripts/Enemies/red_fish.gd" id="1_1u30y"]
+[ext_resource type="PackedScene" uid="uid://bj3hh4i23olws" path="res://models/ramming_fish.glb" id="2_4eh01"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_lc1yh"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_an8g8"]
+size = Vector3(1.162, 0.651, 1.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4eh01"]
 albedo_color = Color(0.9010763, 0.19110942, 0.41910145, 1)
@@ -15,9 +17,13 @@ collision_mask = 7
 script = ExtResource("1_1u30y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_lc1yh")
+shape = SubResource("BoxShape3D_an8g8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 material_override = SubResource("StandardMaterial3D_4eh01")
 mesh = SubResource("BoxMesh_1u30y")
 skeleton = NodePath("")
+
+[node name="ramming_fish2" parent="." instance=ExtResource("2_4eh01")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
