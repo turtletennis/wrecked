@@ -1,9 +1,123 @@
-[gd_scene format=3 uid="uid://diylsxm65gdt1"]
+[gd_scene load_steps=7 format=3 uid="uid://diylsxm65gdt1"]
+
+[ext_resource type="Theme" uid="uid://c7yputbhw5ipm" path="res://UI/ui_theme.tres" id="1_k86xs"]
+[ext_resource type="Script" uid="uid://cp80vttlbha8d" path="res://scripts/title_screen.gd" id="2_gwl5o"]
+[ext_resource type="Texture2D" uid="uid://dtpd2ouuqoc2u" path="res://textures/ramming_fish_render.png" id="3_525av"]
+[ext_resource type="Texture2D" uid="uid://dyhu0goofu1v0" path="res://textures/ship_render.png" id="3_gwl5o"]
+[ext_resource type="Texture2D" uid="uid://dfb3my0idkyp4" path="res://textures/stick_fish_render.png" id="4_wdato"]
+[ext_resource type="Texture2D" uid="uid://bfmg8ik0gx1ih" path="res://textures/puffer_fish_render.png" id="5_k5sll"]
 
 [node name="Title" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_k86xs")
+ratio = 1.7778
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/AspectRatioContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_gwl5o")
+first_level_path = "res://levels/level1.tscn"
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/AspectRatioContainer/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label-Title" type="Label" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+text = "wrecked"
+
+[node name="Button" type="Button" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start Game"
+
+[node name="HBoxContainer blue fish" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer blue fish"]
+layout_mode = 2
+text = "Blue Fish will attempt to ram you out of the way"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer blue fish"]
+custom_minimum_size = Vector2(240, 135)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_525av")
+expand_mode = 2
+
+[node name="HBoxContainer blue fish2" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer blue fish2"]
+layout_mode = 2
+text = "Yellow Fish will attatch to you and pull you upwards"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer blue fish2"]
+custom_minimum_size = Vector2(240, 135)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_wdato")
+expand_mode = 2
+
+[node name="HBoxContainer ship" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer ship"]
+layout_mode = 2
+text = "The goal is to reach the shipwreck at the end of the level"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer ship"]
+custom_minimum_size = Vector2(240, 135)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_gwl5o")
+expand_mode = 2
+
+[node name="HBoxContainer ramming-fish" type="HBoxContainer" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer ramming-fish"]
+layout_mode = 2
+text = "Puffer fish will instantly kill you! Forcing a level restart"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer ramming-fish"]
+custom_minimum_size = Vector2(240, 135)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_k5sll")
+expand_mode = 2
+
+[node name="Label-controls-title" type="Label" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Controls"
+
+[node name="Label2-controls-details" type="Label" parent="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Left-stick / wasd / arrow keys - move diver
+controller \"A\" / keyboard \"E\" - empty mask
+controller x\" / keyboard \"Q\" - shake off yellow fish
+"
+
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button" to="CanvasLayer/AspectRatioContainer/CenterContainer" method="start_game"]
