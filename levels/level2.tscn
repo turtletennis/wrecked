@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://cctgl6hsfvgr7" path="res://components/Air Pocket.tscn" id="7_hfi3b"]
 [ext_resource type="PackedScene" uid="uid://cnx57fa32032r" path="res://components/Red Fish.tscn" id="8_75exu"]
 [ext_resource type="PackedScene" uid="uid://bnhexmhyiykuk" path="res://components/Yellow Fish.tscn" id="9_sr7fn"]
-[ext_resource type="PackedScene" uid="uid://cnihg8oxuibvv" path="res://components/Puffer Fish.tscn" id="10_giimr"]
+[ext_resource type="PackedScene" path="res://components/Puffer Fish.tscn" id="10_giimr"]
 [ext_resource type="Theme" uid="uid://c7yputbhw5ipm" path="res://UI/ui_theme.tres" id="11_vuw6k"]
 [ext_resource type="Script" uid="uid://cpc50o63woc6e" path="res://scripts/ui_controller.gd" id="12_erhed"]
-[ext_resource type="Script" path="res://scripts/test_widget.gd" id="13_7a6c5"]
+[ext_resource type="Script" uid="uid://bc0te82slhin3" path="res://scripts/test_widget.gd" id="13_7a6c5"]
 [ext_resource type="Shader" uid="uid://bj635dippc5io" path="res://shaders/Vignette.gdshader" id="14_vrpbn"]
 [ext_resource type="Script" uid="uid://bov3m0kt1gqjo" path="res://scripts/VignetteController.gd" id="15_qisw3"]
 
@@ -47,7 +47,7 @@ shader_parameter/visible_radius = 0.0
 shader_parameter/softness = 0.2
 shader_parameter/vignette_color = Color(0.10980392, 0.32156864, 0.6, 1)
 
-[node name="Level" type="Node3D"]
+[node name="Level2" type="Node3D"]
 
 [node name="Water surface" type="CSGMesh3D" parent="."]
 mesh = SubResource("BoxMesh_jj0ry")
@@ -339,10 +339,10 @@ theme = ExtResource("11_vuw6k")
 script = ExtResource("12_erhed")
 game_over_container = NodePath("PanelContainer-GameOver")
 game_over_reason_label = NodePath("PanelContainer-GameOver/MarginContainer/VBoxContainer/Label-reason")
-win_container = NodePath("../PanelContainer-Win")
+win_container = NodePath("PanelContainer-Win")
 next_scene_path = "res://levels/title.tscn"
 game_over_button = NodePath("PanelContainer-GameOver/MarginContainer/VBoxContainer/Button-tryAgain")
-win_button = NodePath("../PanelContainer-Win/MarginContainer/VBoxContainer/Button-nextLevel")
+win_button = NodePath("PanelContainer-Win/MarginContainer/VBoxContainer/Button-nextLevel")
 
 [node name="Polygon2D" type="Polygon2D" parent="UI" node_paths=PackedStringArray("player")]
 visible = false
@@ -405,40 +405,41 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Try again"
 
-[node name="PanelContainer-Win" type="PanelContainer" parent="."]
+[node name="PanelContainer-Win" type="PanelContainer" parent="UI"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -282.5
+offset_top = -117.0
+offset_right = 282.5
+offset_bottom = 117.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("11_vuw6k")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer-Win"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer-Win"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer-Win/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer-Win/MarginContainer"]
 layout_mode = 2
 
-[node name="Label-heading" type="Label" parent="PanelContainer-Win/MarginContainer/VBoxContainer"]
+[node name="Label-heading" type="Label" parent="UI/PanelContainer-Win/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 72
 text = "YOU WIN!"
 horizontal_alignment = 1
 
-[node name="Label-reason" type="Label" parent="PanelContainer-Win/MarginContainer/VBoxContainer"]
+[node name="Label-reason" type="Label" parent="UI/PanelContainer-Win/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 1
 text = "You reached the wreck
  and found the treasure"
 
-[node name="Button-nextLevel" type="Button" parent="PanelContainer-Win/MarginContainer/VBoxContainer"]
+[node name="Button-nextLevel" type="Button" parent="UI/PanelContainer-Win/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Restart Game"
@@ -449,4 +450,4 @@ shadow_enabled = true
 
 [connection signal="ship_reached_by_player" from="World/Shipwreck" to="." method="_on_shipwreck_ship_reached_by_player"]
 [connection signal="pressed" from="UI/PanelContainer-GameOver/MarginContainer/VBoxContainer/Button-tryAgain" to="UI" method="try_again_pressed"]
-[connection signal="pressed" from="PanelContainer-Win/MarginContainer/VBoxContainer/Button-nextLevel" to="UI" method="next_level_button_pressed"]
+[connection signal="pressed" from="UI/PanelContainer-Win/MarginContainer/VBoxContainer/Button-nextLevel" to="UI" method="next_level_button_pressed"]

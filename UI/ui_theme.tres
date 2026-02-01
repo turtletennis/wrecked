@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c6i7ec70u5oh3" path="res://UI/PNG/Blue/Double/button_square_flat.png" id="1_6tkuj"]
 [ext_resource type="Texture2D" uid="uid://cvgtfqo1om1m5" path="res://UI/PNG/Extra/Default/input_outline_square.png" id="1_it55r"]
 [ext_resource type="FontFile" uid="uid://d05xpbyg636ii" path="res://UI/Font/Kenney Future Narrow.ttf" id="2_p8160"]
-[ext_resource type="StyleBox" uid="uid://b68y1fyhk254e" path="res://UI/button_style.tres" id="2_qbadw"]
+[ext_resource type="StyleBox" path="res://UI/button_style.tres" id="2_qbadw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s437d"]
 texture = ExtResource("1_6tkuj")

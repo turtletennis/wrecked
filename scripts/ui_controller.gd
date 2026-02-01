@@ -22,7 +22,8 @@ func try_again_pressed() -> void:
 	GameController.try_again()
 
 func next_level_button_pressed() -> void:
-	GameController.next_level(next_scene_path)
+	print("Changing scene to ", next_scene_path)
+	GameController.call_deferred("next_level", next_scene_path)
 
 func win() -> void:
 	win_container.visible = true
