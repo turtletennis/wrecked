@@ -12,7 +12,9 @@ var ui:UIController
 var env: Environment
 
 func _ready():
-	env = get_node("/root/Level/World_Environment").environment
+	var env_node = get_node("/root/Level/World_Environment")
+	if(env_node):
+		env = env_node.environment
 
 func _process(delta: float) -> void:
 	if not env:
