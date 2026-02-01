@@ -33,9 +33,17 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+
+	var move_speed = speed
+	if Input.is_physical_key_pressed(KEY_SHIFT):
+		move_speed = speed * 5
+		get_node("CollisionShape3D").set_deferred("disabled", true)
+		blindness = 0.0
+	else:
+		get_node("CollisionShape3D").set_deferred("disabled", false)
 	
-	velocity.x = input_dir.x * speed
-	velocity.y = input_dir.y * speed * -1
+	velocity.x = input_dir.x * move_speed
+	velocity.y = input_dir.y * move_speed * -1
 	velocity.z = 0
 	velocity += push_total_force
 	push_total_force = push_total_force.slerp(Vector3.ZERO,push_decay_amount*delta)
