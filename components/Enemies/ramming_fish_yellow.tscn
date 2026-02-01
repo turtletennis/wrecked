@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgjpl47llaqmx"]
+
+[ext_resource type="PackedScene" uid="uid://bj3hh4i23olws" path="res://models/ramming_fish.glb" id="1_e04e4"]
+[ext_resource type="Texture2D" uid="uid://ttpo43mjhk7r" path="res://models/ramming_fish_ramming_fish_ramming_fish_BaseColor.png" id="2_v4clk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4dry"]
+albedo_color = Color(1, 0.804, 0.16000003, 1)
+albedo_texture = ExtResource("2_v4clk")
+
+[node name="ramming_fish_yellow" instance=ExtResource("1_e04e4")]
+
+[node name="ramming_fish" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_d4dry")
