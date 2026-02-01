@@ -5,9 +5,12 @@ extends ColorRect
 @export var player: Player
 @export var min_radius := 0.2  # how dark it gets at 0 HP
 
+@export var vignette_colour: Color = Color(0.02, 0.05, 0.15, 1.0);
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	mat.set_shader_parameter("vignette_color", vignette_colour)
 	pass # Replace with function body.
 
 

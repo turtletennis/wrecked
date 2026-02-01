@@ -16,13 +16,15 @@ var yellowFishUpForce: float = 0.0
 var player_surfaced = false
 
 @export var blindness:float = 0.0
-@export var blindness_rate:float = 0.05
+@export var blindness_rate:float = 0.1
 @export var blindness_drain_rate:float = 5.0
 @export var push_decay_amount:float = 5
 var push_total_force:Vector3 = Vector3.ZERO
 func _ready() -> void:
 	animationPlayer.play(swimAnimationName)
 	animationPlayer.pause()
+	add_to_group("player")
+
 func _process(delta: float) -> void:
 	input_dir = Input.get_vector("left","right","up","down")
 	if yellowFishAttached.size() > 0:
